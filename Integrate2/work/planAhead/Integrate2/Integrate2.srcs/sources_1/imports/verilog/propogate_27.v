@@ -33,8 +33,14 @@ module propogate_27 (
   
   reg [2:0] clkSel;
   
+  wire [1-1:0] M_slowclk20_value;
+  counter_39 slowclk20 (
+    .clk(clk),
+    .rst(rst),
+    .value(M_slowclk20_value)
+  );
   wire [1-1:0] M_slowclk21_value;
-  counter_19 slowclk21 (
+  counter_40 slowclk21 (
     .clk(clk),
     .rst(rst),
     .value(M_slowclk21_value)
@@ -46,13 +52,13 @@ module propogate_27 (
     .value(M_slowclk22_value)
   );
   wire [1-1:0] M_slowclk23_value;
-  counter_39 slowclk23 (
+  counter_41 slowclk23 (
     .clk(clk),
     .rst(rst),
     .value(M_slowclk23_value)
   );
   wire [1-1:0] M_slowclk24_value;
-  counter_40 slowclk24 (
+  counter_42 slowclk24 (
     .clk(clk),
     .rst(rst),
     .value(M_slowclk24_value)
@@ -67,7 +73,7 @@ module propogate_27 (
   reg [1-1:0] M_randomizer_randclkrst;
   reg [1-1:0] M_randomizer_numbregEn;
   reg [1-1:0] M_randomizer_clkregEn;
-  randomizer_41 randomizer (
+  randomizer_43 randomizer (
     .clk(clk),
     .rst(rst),
     .numSeed(M_randomizer_numSeed),
@@ -83,7 +89,7 @@ module propogate_27 (
   );
   
   wire [4-1:0] M_rowCtr_value;
-  counter_42 rowCtr (
+  counter_44 rowCtr (
     .clk(chosenClk),
     .rst(rst),
     .value(M_rowCtr_value)
@@ -142,11 +148,11 @@ module propogate_27 (
       3'h4: begin
         chosenClk = M_slowclk21_value;
       end
-      3'h5: begin
-        chosenClk = M_slowclk23_value;
-      end
       3'h7: begin
         chosenClk = M_slowclk23_value;
+      end
+      3'h5: begin
+        chosenClk = M_slowclk20_value;
       end
       3'h6: begin
         chosenClk = M_slowclk24_value;

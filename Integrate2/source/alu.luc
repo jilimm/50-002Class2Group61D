@@ -1,5 +1,5 @@
 //****************THIS ALU FILE IS TAKEN FROM 
-//****************OUR PREVIOUS 1D PROJECT
+//****************OUR PREVIOUS MHP PORJECT
 
 global Inst {
   const ADD   = 6b000000; //opcode for addition     a+b

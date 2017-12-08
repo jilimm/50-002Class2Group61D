@@ -1,3 +1,6 @@
+//******THIS STATE CHANGES OUR GAME FROM THE MAIN STATE TO THE HALT state
+//******MAIN STATE IS THE STATE WE ARE AT WHEN WE RANDOMLY GENERATE NUMBER AND CLK PERID
+//******
 module state (
     input clk,  // clock
     input rst,  // reset
@@ -113,11 +116,11 @@ module state (
     //****CURRENTLY DISPLAYS CURRENT SCORE
     //result = scoreSum.out[0]+scoreSum.out[1]*2+scoreSum.out[2]*4+scoreSum.out[3]*8+scoreSum.out[4]*16+scoreSum.out[5]*32+scoreSum.out[6]*64+scoreSum.out[7]*128;
    // translater.num = 0;
-    scoreDisplay[3] = 0;
+    scoreDisplay[3] = 11;
     //scoreDisplay[2]=0;
     //scoreDisplay[1]=0;
     //scoreDisplay[0]=0;
-    trans.value=scoreSum.out;
+    trans.value=highScore;
     scoreDisplay[2:0]=trans.digits;
     case (state.q){
     //main state starts propogation

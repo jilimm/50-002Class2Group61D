@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Dec 08 14:30:45 2017
+// Written by: Map P.20131013 on Fri Dec 08 15:08:53 2017
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -142,31 +142,31 @@ TIMEGRP clk = BEL "myState/M_state_q_FSM_FFd1" BEL "myState/addReg/M_regs_q_7"
         "myState/mainState/button_cond3/M_ctr_q_0" BEL
         "myState/mainState/button_cond3/sync/M_pipe_q_1" BEL
         "myState/mainState/button_cond3/sync/Mshreg_M_pipe_q_1" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_23" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_22" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_21" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_20" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_19" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_18" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_17" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_16" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_15" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_14" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_13" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_12" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_11" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_10" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_9" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_8" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_7" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_6" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_5" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_4" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_3" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_2" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_1" BEL
-        "myState/mainState/mypropogater/slowclk23/M_ctr_q_0" BEL
         "myState/mainState/mypropogater/slowclk24/M_ctr_q_24" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_23" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_22" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_21" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_20" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_19" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_18" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_17" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_16" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_15" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_14" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_13" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_12" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_11" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_10" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_9" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_8" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_7" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_6" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_5" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_4" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_3" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_2" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_1" BEL
+        "myState/mainState/mypropogater/slowclk24/M_ctr_q_0" BEL
         "myState/mainState/mypropogater/randomizer/numbreg/M_regs_q_0" BEL
         "myState/mainState/mypropogater/randomizer/numbreg/M_regs_q_1" BEL
         "myState/mainState/mypropogater/randomizer/numbreg/M_regs_q_2" BEL

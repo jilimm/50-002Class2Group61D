@@ -20,9 +20,9 @@ global ClkNumb{
   const SLOWCLK23= 3b010;
   const SLOWCLK24= 3b011;
   const SLOWCLK21 = 3b100;
-  const SLOWCLK231 = 3b101;
+  const SLOWCLK20 = 3b101;
   const SLOWCLK241 = 3b110;
-  const SLOWCLK232 = 3b111;
+  const SLOWCLK231 = 3b111;
 }
 
 module propogate (
@@ -54,7 +54,8 @@ module propogate (
   .clk(clk){
   .rst(rst){
         //set up an array of slow clocks i can choose from
-        counter slowclk21(#SIZE(1),#DIV(22));
+        counter slowclk20(#SIZE(1),#DIV(20));
+        counter slowclk21(#SIZE(1),#DIV(21));
         counter slowclk22(#SIZE(1),#DIV(22));
         counter slowclk23(#SIZE(1),#DIV(23));
         counter slowclk24(#SIZE(1),#DIV(24));
@@ -125,8 +126,8 @@ module propogate (
       chosenClk = slowclk21.value;
       ClkNumb.SLOWCLK231:
       chosenClk = slowclk23.value;
-      ClkNumb.SLOWCLK232:
-      chosenClk = slowclk23.value;
+      ClkNumb.SLOWCLK20:
+      chosenClk = slowclk20.value;
       ClkNumb.SLOWCLK241:
       chosenClk = slowclk24.value;
     }

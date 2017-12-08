@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module randomizer_41 (
+module randomizer_43 (
     input clk,
     input rst,
     input [31:0] numSeed,
@@ -24,7 +24,7 @@ module randomizer_41 (
   wire [3-1:0] M_numbreg_out;
   reg [1-1:0] M_numbreg_en;
   reg [3-1:0] M_numbreg_data;
-  reg3bit_43 numbreg (
+  reg3bit_45 numbreg (
     .clk(clk),
     .rst(rst),
     .en(M_numbreg_en),
@@ -34,7 +34,7 @@ module randomizer_41 (
   wire [3-1:0] M_clkreg_out;
   reg [1-1:0] M_clkreg_en;
   reg [3-1:0] M_clkreg_data;
-  reg3bit_43 clkreg (
+  reg3bit_45 clkreg (
     .clk(clk),
     .rst(rst),
     .en(M_clkreg_en),
@@ -45,7 +45,7 @@ module randomizer_41 (
   reg [1-1:0] M_numb_gen_rst;
   reg [1-1:0] M_numb_gen_next;
   reg [32-1:0] M_numb_gen_seed;
-  pn_gen_45 numb_gen (
+  pn_gen_47 numb_gen (
     .clk(clk),
     .rst(M_numb_gen_rst),
     .next(M_numb_gen_next),
@@ -56,7 +56,7 @@ module randomizer_41 (
   reg [1-1:0] M_clk_gen_rst;
   reg [1-1:0] M_clk_gen_next;
   reg [32-1:0] M_clk_gen_seed;
-  pn_gen_45 clk_gen (
+  pn_gen_47 clk_gen (
     .clk(clk),
     .rst(M_clk_gen_rst),
     .next(M_clk_gen_next),

@@ -8,7 +8,7 @@
    Parameters:
      WIDTH = 3
 */
-module reg3bit_43 (
+module reg3bit_45 (
     input clk,
     input en,
     input rst,
