@@ -1,6 +1,6 @@
 //****THIS PROPOGATER TAKES IN A RANDOME NUMBER SEQUENCE AND CLOCK SEQUENCE
 //**OUTPUTS THE RANDOM NUMBER SEQUNCE AT THE RANDOMLY SELECTED CLOCK SEQUENCE
-global RowNumb{
+global RowNumb{  //assigns the 4 bit number from counter to LED cathode outputs
   const ROW1 = 4b0000;
   const ROW2= 4b0001;
   const ROW3= 4b0010;
@@ -14,7 +14,7 @@ global RowNumb{
   const ROW11 = 4b1010;
 }
 
-global ClkNumb{
+global ClkNumb{  //based on the 3 bit clk selection number generated output I choose a clock
   const SLOWCLK221 = 3b000;
   const SLOWCLK22= 3b001;
   const SLOWCLK23= 3b010;
@@ -30,7 +30,7 @@ module propogate (
     input rst,  // reset
     output rowLit[4], //the row to be lit up (ctr.value)
     output numSeq[3], //column to be lighted up
-    output row1,
+    output row1,   //LED matrix cathode and anode outputs
     output row2,
     output row3,
     output row4,
@@ -43,8 +43,7 @@ module propogate (
     output gnd1,
     output gnd2,
     output gnd3,
-    output clkChoice[3]
-  //  output propClkValue
+    output clkChoice[3] //output clock choice to 
   ) {
 
   sig chosenClk; 
@@ -63,35 +62,38 @@ module propogate (
     }
   } 
 
- .clk(chosenClk) {   //connect my normal clock to a slower clock
+ .clk(chosenClk) {   //connect my normal clock to the clock that is randomly generated
     .rst(rst){
         counter rowCtr(#SIZE(4),#TOP(4b1010)); //ctr will go from 00 to 11 this will be the number of row that is lit
-      //seeds to start pn_gen of mojo seeds must be non-zero
-        dff seed[32] (#INIT(32d51)); //seed to start numb_gen
-        dff clkseed[32] (#INIT(32d3)); // seed to start clk_gen seed chosen is diff from seed1 to ensure randomness
+            //these dffs generate the seeds to start pn_gen of clock choice and number sequence
+        dff seed[32] (#INIT(32d51)); 
+        dff clkseed[32] (#INIT(32d3)); 
   }
  }
  
    
   always {
-    //initializin randomizer
+    //set up the inputs of the randomizer
     randomizer.numSeed = seed.q;
     randomizer.clkSeed = clkseed.q;
-    randomizer.randnumNext = 0; 
+    randomizer.randnumNext = 0;  //next signals of the random number generator is defaulted to 0 (dont generate a random numbe unless specified)
     randomizer.randclkNext = 0; 
     randomizer.numbregEn = 0; 
     randomizer.clkregEn = 0;
-    randomizer.randnumrst=rst;
+    randomizer.randnumrst=rst; //following mojo pn_gen convention
     randomizer.randclkrst = rst;
     if (randomizer.ranNum==3b000){
-            randNum = 3b101; //if the randomizer gives me 000 I will make the number sequence 101
+            randNum = 3b101; //if the randomizer gives me number sequence 000 I will make the number sequence 101
     }
     else{
           randNum = randomizer.ranNum; //if not the number sequence is the number given by randomizer
     }
     
+    //clock selection choice is output of randomizer
     clkSel = randomizer.ranClk;
     clkChoice = clkSel;
+    
+    //
     rowLit = rowCtr.value;
     
 

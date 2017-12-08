@@ -11,10 +11,10 @@ module mojo_top (
     input avr_tx,           // AVR TX (FPGA RX)
     output avr_rx,          // AVR RX (FPGA TX)
     input avr_rx_busy,      // AVR RX buffer full
-    input button,            // Super cool button!
+    input button,            //three bishi bashi buttons
     input button2,
     input button3,
-    output high1,
+    output high1, //signals sent to LED matrix. 10 cathodes 2 annodes
     output high2,
     output high3,
     output high4,
@@ -27,15 +27,9 @@ module mojo_top (
     output low1,
     output low2,
     output low3,
-    //output io_seg[8],
-    //output io_sel[4],
-    //output highscore
-    output ext_sev_seg[8],
+    output ext_sev_seg[8], //output to the external seven segment light display
     output sev_seg_sel[4],
     output io_led[3][8]
-    
-   // output io_led[3][8]
- //   output io_led[3][8]
   ) {
   
   sig rst;                  // reset signal
@@ -48,7 +42,7 @@ module mojo_top (
     reset_conditioner reset_cond3;
     .rst(rst){
       state myState; // my super dope state machine
-      multi_seven_seg seg;
+      multi_seven_seg seg; //help to convert binary number to output on 7 seg 
     }
   }
   
@@ -69,42 +63,31 @@ module mojo_top (
     myState.centBtn = !button2; 
     myState.rightBtn = !button3;
    
-    //make lights go light up
-    //output to the pins in my io Shield
-    high1 = myState.row1; //mymain.high1;
-    high2 = myState.row2; //mymain.high2;
-    high3 = myState.row3; //mymain.high3;
+//lights on LED matrix follow outputs of my state machine
+    high1 = myState.row1; 
+    high2 = myState.row2; 
+    high3 = myState.row3; 
     high4 = myState.row4;
-    high5 = myState.row5; //mymain.high1;
+    high5 = myState.row5; 
     high6 = myState.row6; 
     high7 = myState.row7; 
     high8 = myState.row8;
     high9 = myState.row9; 
     high10 = myState.row10;
-    low1 = myState.gnd1; //mymain.low1;
-    low2 = myState.gnd2; //mymain.low2;
-    low3 = myState.gnd3; //mymain.low3;
+    low1 = myState.gnd1; 
+    low2 = myState.gnd2;
+    low3 = myState.gnd3; 
    
     //configuring seven seg display
     ext_sev_seg = seg.seg;
-    //ext_seven_seg[7]=1;
     sev_seg_sel = ~seg.sel;
-    //io_seg = ~seg.seg;
-    //io_sel = ~seg.sel;
     seg.values = myState.scoreDisplay;
     
     //led lights for debugging
-    led[1:0] = myState.rowresult; //main state
-    led[7:2] = myState.totalScore[5:0];
-    io_led[0] = myState.buttonCounter;
-    io_led[1] = myState.buttonReg;
-    io_led[2] = myState.highScoreOut;
-    
-    
-    
-    
- //  led = myState.totalScore; //outputs the total score
-   
-    // led[7:2] =  //for total score of all rounds
+    led[1:0] = myState.rowresult; //tells me the score at the end of the propogation
+    led[7:2] = myState.totalScore[5:0]; //first 5 bits of my total score (shuold be enough highest score so far is 17)
+    io_led[0] = myState.buttonCounter;  //button counter and button reg helps me keep track of button press in my state machine so I can start game on any button press
+    io_led[1] = myState.buttonReg;  
+    io_led[2] = myState.highScoreOut; //high score of game
   }
 }

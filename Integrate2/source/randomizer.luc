@@ -4,35 +4,35 @@
 module randomizer (
     input clk,  // clock
     input rst,  // reset
-    input numSeed[32],
-    input clkSeed[32],
-    output ranNum[3],
-    output ranClk[3],
-    input randnumNext, 
+    input numSeed[32], //seed to start the pn gen responsible for generating random number sequence
+    input clkSeed[32], //seed to start pn gen responsible for clk selection number
+    output ranNum[3], //output 3 bit number sequence
+    output ranClk[3], //output 3 bit clk selection choice
+    input randnumNext,  //signal to generate a new random number
     input randclkNext,
-    input randnumrst,
-    input randclkrst,
-    input numbregEn,
-    input clkregEn
+    input randnumrst, //signal to output the new random number
+    input randclkrst, 
+    input numbregEn, //register enable sequence. enable sequence are enabled to 1 when you want to capture the random number generated.
+    input clkregEn  //pn_gen works at mojo clock speed. need register to store random numbers outputted so you can input it to your other modules
   ) {
   
 .clk(clk){
   .rst(rst){
     reg3bit numbreg; //register will store the random number captured so there is a stable constant number for propogater to reference
-    reg3bit clkreg;   
+    reg3bit clkreg;  //register will store the random clock selection  so there is a stable constant number for propogater to reference
       
     }
-    pn_gen numb_gen;
+    pn_gen numb_gen; //mojo pn generator used
     pn_gen clk_gen;
   }
   
   
   always {
     numb_gen.rst = rst;
-    numb_gen.next = randnumNext;
+    numb_gen.next = randnumNext;    //connect the values of each pn_gen to the inputs received by the module
     numb_gen.seed = numSeed;
     numb_gen.rst = randnumrst;
-    numbreg.data = numb_gen.num[2:0];
+    numbreg.data = numb_gen.num[2:0]; //mojo pn_gen outputs a 32 bit number, since we only want 3 we will take bits 3-0 of the 32 bit number generated. 
     numbreg.en = numbregEn;
     ranNum = numbreg.out;
     

@@ -1,3 +1,5 @@
+//**THIS BIN TO ASCII MODULE HELPS ME OUTPUT STUFF TO ME 7 SEG
+
 module binToAscii (
     input num,
     output ascii [3]

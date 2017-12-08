@@ -1,6 +1,5 @@
 //***THIS MAIN FILE COMPARES THE BUTTON INPUT, ROW BEING LIT AND THE NUMBER SEUQNECE BEING LIT
-//****
-//OUTPUTS A RESULT
+//****OUTPUTS A SCORE AT THE END OF THE PROPOGATION TO MY STATE THAT WILL DETERMINE WHICH STATE PLAYER WILL GO TO 
 module main (
     input clk,       // clock
     input rst,       // reset
@@ -8,7 +7,7 @@ module main (
     input center1,       // button input right
     input right0,        // button input center
     output result[2],  // press counter
-    output high1,
+    output high1,  //led matric outputs 10 cathodes and 3 annodes
     output high2,
     output high3,
     output high4,
@@ -21,8 +20,7 @@ module main (
     output low1,
     output low2,
     output low3,
-    output rowOn[4]   //what is the row that is lit up
-   // output propClk, 
+    output rowOn[4]   //row number that is being lit up 
   ) {
   
   .clk(clk) {
@@ -30,13 +28,11 @@ module main (
     button_conditioner button_cond1;     // button input conditioner
     button_conditioner button_cond2;     // button input reset_conditioner
     button_conditioner button_cond3;     // button input conditioner
-    // dff clk_ctr[24];
     .rst(rst) {
       counter edge_ctr(#SIZE(1),#DIV(22)); //detect edge every ~0.08sec
       
       propogate mypropogater;
-      reg2bit score; 
-     // dff mainResult[2];
+      reg2bit score; //2 bit score register used to keep track of our scores
     }
   }
   .clk(edge_ctr.value){
@@ -44,7 +40,7 @@ module main (
     edge_detector edge_detector2(#RISE(1), #FALL(0)); // detect rising edges
     edge_detector edge_detector3(#RISE(1), #FALL(0)); // detect rising edges
     .rst(rst) {
-       
+    //dff keeps track of button press
       dff left[1];
       dff right[1];
       dff cent[1];    
@@ -63,7 +59,7 @@ module main (
     result = score.out;
     score.data = 2b00;
     
-    high1 = mypropogater.row1;
+    high1 = mypropogater.row1; //LED matrix outputs determined by my propogater
     high2 = mypropogater.row2;
     high3 = mypropogater.row3;
     high4 = mypropogater.row4;
@@ -95,6 +91,8 @@ module main (
        right.d = 1;
       }
       
+    
+    //compare button input by user with the number on game being lit up
       myalu.alufn = Inst.CMPEQ;
       myalu.a[2] = left.q;
       myalu.a[1] = cent.q;
@@ -114,7 +112,7 @@ module main (
                   }
       
     }
-      //in the last row if my sequence is correct i get 2 points
+      //if and only if i enter correct sequence in row 10 I get 2 points
       else if (mypropogater.rowLit==RowNumb.ROW10){
               if (score.out==2b00 && myalu.alu[0]){ //write 2 to score if and only if i enter correct seq at row 3
                     score.data=2b10;
@@ -125,7 +123,7 @@ module main (
                   score.en=0;
               }
     }
-      //at the first row, i reset my number of points 
+      //at the first row, I the number of points i gain from that round (prevents errors) 
       else if (mypropogater.rowLit==RowNumb.ROW1){
             //reset my score register value
             score.data=2b00;
@@ -134,11 +132,9 @@ module main (
     }
     
       
-      else{  //at every other row dont write anything to register
-            //keep my register value
+      else{  //at every other row (row2-8) dont write anything to my score register
               score.en=0;
-               //person gets 0 points 
-              //dont register any button inputs
+               //button inputs during this period are not registered
                left.d=0;
                right.d=0;
                cent.d=0;
