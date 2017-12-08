@@ -146,7 +146,22 @@ module main (
                left.d=0;
                right.d=0;
                cent.d=0;
+      
+      //Further (possible logic?)
+    //if its row2-8 and there are button presses, output signal wrongTime==low1
+    //if sate machine receives  wrongTime signal it goes to  
+      /*
+      if (left.q|cent.q|right.q){
+               wrongTime=1;
+         }
+         
+       else {
+           wrongTime=0;
+         }
+      */
               
     }
+    
+    
 }
 }

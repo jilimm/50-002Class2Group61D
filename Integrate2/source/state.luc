@@ -174,8 +174,11 @@ module state (
           //you missed the sequence or you entered it wrongly  
           state.d = state.HALT;
           }
-        
- 
+        /*
+         else if (mainState.wrongTime==1){
+           state.d = state.HALT;
+           }
+        */
         
         
       state.HALT:
