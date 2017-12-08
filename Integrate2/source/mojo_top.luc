@@ -1,0 +1,110 @@
+module mojo_top (
+    input clk,              // 50MHz clock
+    input rst_n,            // reset button (active low)
+    output led [8],         // 8 user controllable LEDs
+    input cclk,             // configuration clock, AVR ready when high
+    output spi_miso,        // AVR SPI MISO
+    input spi_ss,           // AVR SPI Slave Select
+    input spi_mosi,         // AVR SPI MOSI
+    input spi_sck,          // AVR SPI Clock
+    output spi_channel [4], // AVR general purpose pins (used by default to select ADC channel)
+    input avr_tx,           // AVR TX (FPGA RX)
+    output avr_rx,          // AVR RX (FPGA TX)
+    input avr_rx_busy,      // AVR RX buffer full
+    input button,            // Super cool button!
+    input button2,
+    input button3,
+    output high1,
+    output high2,
+    output high3,
+    output high4,
+    output high5,
+    output high6,
+    output high7,
+    output high8,
+    output high9,
+    output high10,
+    output low1,
+    output low2,
+    output low3,
+    //output io_seg[8],
+    //output io_sel[4],
+    //output highscore
+    output ext_sev_seg[8],
+    output sev_seg_sel[4],
+    output io_led[3][8]
+    
+   // output io_led[3][8]
+ //   output io_led[3][8]
+  ) {
+  
+  sig rst;                  // reset signal
+  
+  .clk(clk) {
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    reset_conditioner reset_cond;
+    reset_conditioner reset_cond2;
+    reset_conditioner reset_cond3;
+    .rst(rst){
+      state myState; // my super dope state machine
+      multi_seven_seg seg;
+    }
+  }
+  
+  
+  always {
+    reset_cond.in = ~rst_n;   // input raw inverted reset signal
+    rst = reset_cond.out;     // conditioned reset
+    reset_cond2.in = ~rst_n;   // input raw inverted reset signal
+    rst = reset_cond2.out;     // conditioned reset_cond
+    reset_cond3.in = ~rst_n;   // input raw inverted reset signal
+    rst = reset_cond3.out;     // conditioned reset
+    spi_miso = bz;            // not using SPI
+    spi_channel = bzzzz;      // not using flags
+    avr_rx = bz;              // not using serial port
+    
+    
+    myState.leftBtn = !button; // make button active high 
+    myState.centBtn = !button2; 
+    myState.rightBtn = !button3;
+   
+    //make lights go light up
+    //output to the pins in my io Shield
+    high1 = myState.row1; //mymain.high1;
+    high2 = myState.row2; //mymain.high2;
+    high3 = myState.row3; //mymain.high3;
+    high4 = myState.row4;
+    high5 = myState.row5; //mymain.high1;
+    high6 = myState.row6; 
+    high7 = myState.row7; 
+    high8 = myState.row8;
+    high9 = myState.row9; 
+    high10 = myState.row10;
+    low1 = myState.gnd1; //mymain.low1;
+    low2 = myState.gnd2; //mymain.low2;
+    low3 = myState.gnd3; //mymain.low3;
+   
+    //configuring seven seg display
+    ext_sev_seg = seg.seg;
+    //ext_seven_seg[7]=1;
+    sev_seg_sel = ~seg.sel;
+    //io_seg = ~seg.seg;
+    //io_sel = ~seg.sel;
+    seg.values = myState.scoreDisplay;
+    
+    //led lights for debugging
+    led[1:0] = myState.rowresult; //main state
+    led[7:2] = myState.totalScore[5:0];
+    io_led[0] = myState.buttonCounter;
+    io_led[1] = myState.buttonReg;
+    io_led[2] = myState.highScoreOut;
+    
+    
+    
+    
+ //  led = myState.totalScore; //outputs the total score
+   
+    // led[7:2] =  //for total score of all rounds
+  }
+}

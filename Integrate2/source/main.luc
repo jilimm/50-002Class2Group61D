@@ -1,0 +1,147 @@
+//***THIS MAIN FILE WILL COMPRE THE ROW BEING LIT, THE BUTTON PRESS AND THE NUMBER SEQUENCE
+//OUTPUTS A RESULT
+module main (
+    input clk,       // clock
+    input rst,       // reset
+    input left2,       // button input left
+    input center1,       // button input right
+    input right0,        // button input center
+    output result[2],  // press counter
+    output high1,
+    output high2,
+    output high3,
+    output high4,
+    output high5,
+    output high6,
+    output high7,
+    output high8,
+    output high9,
+    output high10,
+    output low1,
+    output low2,
+    output low3,
+    output rowOn[4]   //what is the row that is lit up
+   // output propClk, 
+  ) {
+  
+  .clk(clk) {
+    
+    button_conditioner button_cond1;     // button input conditioner
+    button_conditioner button_cond2;     // button input reset_conditioner
+    button_conditioner button_cond3;     // button input conditioner
+    // dff clk_ctr[24];
+    .rst(rst) {
+      counter edge_ctr(#SIZE(1),#DIV(22)); //detect edge every ~0.08sec
+      
+      propogate mypropogater;
+      reg2bit score; 
+     // dff mainResult[2];
+    }
+  }
+  .clk(edge_ctr.value){
+    edge_detector edge_detector1(#RISE(1), #FALL(0)); // detect rising edges
+    edge_detector edge_detector2(#RISE(1), #FALL(0)); // detect rising edges
+    edge_detector edge_detector3(#RISE(1), #FALL(0)); // detect rising edges
+    .rst(rst) {
+       
+      dff left[1];
+      dff right[1];
+      dff cent[1];    
+    }
+  }
+  
+  alu myalu;
+  
+  always {
+    myalu.alufn = 6b0;
+    myalu.a = 8b0;
+    myalu.b = 8b0; 
+    result = 2b0;
+    rowOn = mypropogater.rowLit;
+
+    result = score.out;
+    score.data = 2b00;
+    
+    high1 = mypropogater.row1;
+    high2 = mypropogater.row2;
+    high3 = mypropogater.row3;
+    high4 = mypropogater.row4;
+    high5 = mypropogater.row5;
+    high6 = mypropogater.row6;
+    high7 = mypropogater.row7;
+    high8 = mypropogater.row8;
+    high9 = mypropogater.row9;
+    high10 = mypropogater.row10;
+    low1 = mypropogater.gnd1;
+    low2 = mypropogater.gnd2;
+    low3 = mypropogater.gnd3;
+       
+    button_cond1.in = left2;            // raw button input
+    edge_detector1.in = button_cond1.out; // input to the edge_detector
+    button_cond2.in = center1;            // raw button input
+    edge_detector2.in = button_cond2.out; // input to the edge_detector
+    button_cond3.in = right0;            // raw button input
+    edge_detector3.in = button_cond3.out; // input to the edge_detector
+    
+    
+    if(edge_detector1.out){
+       left.d = 1;
+      }
+    if(edge_detector2.out){
+       cent.d = 1;
+      }
+    if(edge_detector3.out){
+       right.d = 1;
+      }
+      
+      myalu.alufn = Inst.CMPEQ;
+      myalu.a[2] = left.q;
+      myalu.a[1] = cent.q;
+      myalu.a[0] = right.q; 
+      myalu.b [2:0] = mypropogater.numSeq;
+     
+      
+      //in the second last row if my sequence is correct i get 1 point       
+      if(mypropogater.rowLit==RowNumb.ROW9){
+              if (myalu.alu[0]){
+                  score.data = 2b01;
+                  score.en=1;
+                  }
+              else{
+                score.data = 2b00;
+                score.en=1;
+                  }
+      
+    }
+      //in the last row if my sequence is correct i get 2 points
+      else if (mypropogater.rowLit==RowNumb.ROW10){
+              if (score.out==2b00 && myalu.alu[0]){ //write 2 to score if and only if i enter correct seq at row 3
+                    score.data=2b10;
+                    score.en=1;
+                  
+                }
+              else{
+                  score.en=0;
+              }
+    }
+      //at the first row, i reset my number of points 
+      else if (mypropogater.rowLit==RowNumb.ROW1){
+            //reset my score register value
+            score.data=2b00;
+            score.en=1;
+    
+    }
+    
+      
+      else{  //at every other row dont write anything to register
+            //keep my register value
+              score.en=0;
+               //person gets 0 points 
+              //dont register any button inputs
+               left.d=0;
+               right.d=0;
+               cent.d=0;
+              
+    }
+}
+}
