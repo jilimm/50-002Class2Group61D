@@ -1,5 +1,5 @@
 //***THIS MAIN FILE COMPARES THE BUTTON INPUT, ROW BEING LIT AND THE NUMBER SEUQNECE BEING LIT
-//****OUTPUTS A SCORE AT THE END OF THE PROPOGATION TO MY STATE THAT WILL DETERMINE WHICH STATE PLAYER WILL GO TO 
+//****OUTPUTS A SCORE AT THE END OF THE PROPOGATION TO MY STATE  
 module main (
     input clk,       // clock
     input rst,       // reset
@@ -50,10 +50,14 @@ module main (
   alu myalu;
   
   always {
+  
+     //instantiate my alu inputs
     myalu.alufn = 6b0;
     myalu.a = 8b0;
     myalu.b = 8b0; 
     result = 2b0;
+    
+    //connect output rowOn to the row Number being lit
     rowOn = mypropogater.rowLit;
 
     result = score.out;
@@ -93,6 +97,10 @@ module main (
       
     
     //compare button input by user with the number on game being lit up
+    
+     //**********************************************************************************************//
+        //************ALU IS USED HERE TO DETERMINS SCORE AFTER PROPOGATION IS COMPLETE****************
+          //********************************************************************************************//
       myalu.alufn = Inst.CMPEQ;
       myalu.a[2] = left.q;
       myalu.a[1] = cent.q;

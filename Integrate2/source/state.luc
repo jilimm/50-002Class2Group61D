@@ -1,6 +1,6 @@
-//******THIS STATE CHANGES OUR GAME FROM THE MAIN STATE TO THE HALT state
-//******MAIN STATE IS THE STATE WE ARE AT WHEN WE RANDOMLY GENERATE NUMBER AND CLK PERID
-//******
+//****OVERALL STATE MACHINE OF THE GAME
+//****MAIN STATE: STATE WHEN GAME IS IN PLAY
+//****HALT STATE: STATE WHEN GAME IS OVER/ MAHCINE IS IDLE
 module state (
     input clk,  // clock
     input rst,  // reset
@@ -24,74 +24,71 @@ module state (
     output rowresult[2], //display result after 1 round of propogation
     output startbutt, //press any button to start game
     output scoreDisplay[4][4], //display to the seven seg
-    output test1, //at main state
-    output test2, // at halt state
     output buttonCounter[8], //counts number of button presses
     output buttonReg[8], //counts previous number of button press
-    output highScoreOut[8]
-//    output highScore[8]
+    output highScoreOut[8] //outputs the 8 bit highScore
   ) {
 
   .clk(clk) {
     .rst(rst) {
-
-    fsm state(#INIT(HALT)) = {MAIN,HALT,SUMUP}; // MAIN = random + propagate + compare the button and the result, sumup = add to score, halt = pause game
+       //start at halt state (also idle state). once the game is in play you are in main state
+      fsm state(#INIT(HALT)) = {MAIN,HALT}; // MAIN = random + propagate + compare the button and the result, sumup = add to score, halt = pause game
       
-      bcounter btnCounter;
-      reg8bit scoreSum; //use an 8bit register to store the toal score of the game // i cannot use dff becuase it mojo clk constantly resets it //try connecting register to the propagtor clock cycle
+      bcounter btnCounter; //button counter counts the number of button presses I make, this will help me start game on any button press. 
+      reg8bit scoreSum; //use an 8bit register to store the toal score of the game 
       reg8bit btnReg; //stores previous value of button presses
       reg8bit addReg;
-      //multi_seven_seg seg;
     }
     
     
   }
   main mainState;
   alu myalu;
-  //binToAscii translater
-  sig anybttnStart;
+  sig anybttnStart; //signal that there has been an any button press which would lead game to jump from halt state to main state
   sig highScore[8];
-  bin_to_dec trans (#DIGITS(3),#LEADING_ZEROS(1));
+  bin_to_dec trans (#DIGITS(3),#LEADING_ZEROS(1)); //to help generate output on 7 seg LED
     
 
   always {
-  //  rowResult=2b00; //rowResult is assumed to be 0 unless specified otherwise
-    test1=0;
-    test2=0;
-    buttonCounter = btnCounter.count;
-    buttonReg = btnReg.out;
-    //instantiate
+    buttonCounter = btnCounter.count; //number of button presses 
+    buttonReg = btnReg.out; //number of button presses made before game went into halt state
+   
+     //instantiate signals and modules referenced
     startbutt=0;
     
-    mainState.clk = clk;
+    //setting up the registers they scoreSum stores the current score of the player playing the game
+    //addReg is a register that prevents the sum from continually adding to itself in the MAIN state.  
     totalScore = scoreSum.out;
     scoreSum.data = 8b0; 
     scoreSum.en=0;
-    addReg.data = scoreSum.out;
+    //addReg acts as a buffer between scoreSum and the aluAdder
+    //if there is no buffer, there would be cyclic circuit like scoreSum.data = scoreSum.out + rowresult
+    //the cyclic circuit would result in the score Sum constantly adding upon itself until it becomes 111111;
+    addReg.data = scoreSum.out; 
     addReg.en=0;
+    //btnReg records number of button presses made before game went into halt state 
+    btnReg.data = 8b0; 
+    btnReg.en=0;  
     
     mainState.rst = rst;
     rowresult = mainState.result;
+    
     //setting up inpts of main state and button press
+    mainState.clk = clk;
     mainState.left2 = leftBtn;
     mainState.right0 = rightBtn;
     mainState.center1 = centBtn;
     
     //initialize high score
-     highScore=8b0;
-    highScoreOut = highScore;   
+    highScore=8b0;
+    highScoreOut = highScore;   //output highScore so we can diaply it on mojo and 7 seg led.
+    
     //raw button input
     btnCounter.button = leftBtn;
     btnCounter.button2 = rightBtn;
     btnCounter.button3 = centBtn;
     
-    //instantiate
-    btnReg.data = 8b0; //connect register data to number of button presses
-    btnReg.en=0;  //dont write into register
-    
-    
-    
-    
+   
     //setting up alu
     myalu.a=0;
     myalu.b=0;
@@ -113,32 +110,30 @@ module state (
     gnd3=1; //put ground to high to deactivate the columns
 
     //setting up my seven_seg output
-    //****CURRENTLY DISPLAYS CURRENT SCORE
-    //result = scoreSum.out[0]+scoreSum.out[1]*2+scoreSum.out[2]*4+scoreSum.out[3]*8+scoreSum.out[4]*16+scoreSum.out[5]*32+scoreSum.out[6]*64+scoreSum.out[7]*128;
-   // translater.num = 0;
     scoreDisplay[3] = 11;
-    //scoreDisplay[2]=0;
-    //scoreDisplay[1]=0;
-    //scoreDisplay[0]=0;
-    trans.value=highScore;
-    scoreDisplay[2:0]=trans.digits;
+    trans.value=highScore; //display high score on 7 seg LED by default
+    scoreDisplay[2:0]=trans.digits; 
+    
+    //*******OUR FSM************//
     case (state.q){
-    //main state starts propogation
+    //MAIN STATE IS THE STATE YOU ARE IN ONCE YOU BEGIN THE GAME
       state.MAIN:
-      test1=1;
-      addReg.en=1; //enable addReg to allow addition
-      
-        scoreSum.en=0;//write disable the scoreSum, only add when your results are correct
+      //write enable to addReg so now addReg.out is your current score
+      addReg.en=1; 
+        
+        //dont write enable your scoreSum register.  
+       scoreSum.en=0;
         
         //dont count button press in main state
          btnCounter.button = 0;
-          btnCounter.button2 = 0;
-          btnCounter.button3 = 0;
+         btnCounter.button2 = 0;
+         btnCounter.button3 = 0;
         
-        btnReg.en=0; //dont write enable anything into button register
+        //dont write enable anything into button register
+        btnReg.en=0; 
         
         
-        //in the main state the LEDs are controlled by the main state;
+        //in the main state the LEDs are controlled by the main state (which references propogater and randomizer)
          gnd1 = mainState.low1;
          gnd2 = mainState.low2;
          gnd3 = mainState.low3;
@@ -154,40 +149,53 @@ module state (
         row9=mainState.high9;
         row10=mainState.high10;
         
-        if (mainState.result!=2b00 && mainState.rowOn==RowNumb.ROW11){ //you have a result
+        //When you are at row 11 (finished propogation) and the score at the end of the propogation !=0 (>0) 
+        if (mainState.result!=2b00 && mainState.rowOn==RowNumb.ROW11){ 
+            //you have gained points now add them up to your current Score
+             //******************************************************************//
+        //************ALU IS USED HERE TO UPDATE CURRENT SCORE ****************
+          //*************************************************************//
+          
             myalu.alufn = Inst.ADD;
             myalu.a=mainState.result;
-            //myalu.a= mainState.result; //points gained from 1 propogation cycle
             myalu.b= addReg.out; //current score of user
-            scoreSum.data = myalu.alu; //connect new score into register input
-            scoreSum.en =1; //update my score
-            addReg.en=0;
-          //display current score on 7 seg LED
+            scoreSum.data = myalu.alu; 
+           //write enable your scoreSum and write disable ur addReg, this prevents a cyclic circuit 
+            scoreSum.en =1; //update my score 
+            addReg.en=0; //dont write to addReg, prevent cyclic circuit 
+          
+          //update score on 7 seg LED
              trans.value=scoreSum.out;
             scoreDisplay[2:0]=trans.digits[2:0];
             scoreDisplay[3]=11;      
         } 
           
-        else if (mainState.result==2b00 && mainState.rowOn==RowNumb.ROW11){//you missed the sequence or you entered it wrongly
-            state.d = state.HALT;
+        else if (mainState.result==2b00 && mainState.rowOn==RowNumb.ROW11){
+          //you missed the sequence or you entered it wrongly  
+          state.d = state.HALT;
           }
         
-      
-        
-     
+ 
         
         
       state.HALT:
-      test2=1; //for debugging purposes
+      
+        
       scoreSum.en=0; //dont write into my register
-      addReg.en=0;
-      //check and update the high score  
+      addReg.en=0; //dont write into my addReg
+      
+        
+      //since its game over, check and update the high score  
         
       if (highScore<scoreSum.out){
+        //******************************************************************//
+        //************ALU IS USED HERE TO UPDATE HIGH SCORE****************
+          //*************************************************************//
             myalu.alufn = Inst.CMPLT;
             myalu.a = highScore;
             myalu.b = scoreSum.out;
-          //current score is higher than the highScore
+          
+          //current score is higher than the highScore, update
         if (myalu.alu[0]){
           highScore = scoreSum.out;
           }
@@ -196,7 +204,7 @@ module state (
           }
         }
         
-       //diaply the updated highScore on the 7seg
+       //display the updated highScore on the 7seg
         trans.value=highScore;
             scoreDisplay[2:0]=trans.digits[2:0];
             scoreDisplay[3]=10; 
@@ -216,35 +224,31 @@ module state (
       gnd1=1;
       gnd2=1;
       gnd3=1;
-      test2=1;
         
-        //connect button counter to raw button inputs
-        //take note of any button inputs 
-       btnCounter.button = leftBtn;
-       btnCounter.button2 = rightBtn;
-        btnCounter.button3 = centBtn;
-        btnReg.en = 0; //dont write enable 
-            
-          //at the halt state i get my button input from the physcial buttons 
-
+         //count the (culmulative) button inputs made since transition to Halt State
+         btnCounter.button = leftBtn;
+         btnCounter.button2 = rightBtn;
+          btnCounter.button3 = centBtn;
+          btnReg.en = 0; //dont write enable bttn Reg. bttnReg currently outputs total number of button presses made before this transition to halt state
         
-        
-        //check for additional button presses within the halt state if there are then go to main state
-        
-           if (btnReg.out < btnCounter.count){  //compares the previous button count with current button count
-            anybttnStart=1; //if its more than --> buttons were pressed during halt state
+        //check for additional button presses made within the halt state 
+        //if there are, this means that buttons were pressed during halt state
+           if (btnReg.out < btnCounter.count){  
+            anybttnStart=1; 
         }
            else {
             anybttnStart=0;
         }
-            if (anybttnStart==1) { //buttonpress is remembered :(
-          //restart ur main state 
-           mainState.rst=1;
-          //update the previuos number of button press
+        
+        //return to main state if buttons are pressed in halt state
+            if (anybttnStart==1) { 
+           mainState.rst=1; //reset your main State the game restarts pn_gen an its seeds will restart. 
+          
+          //update btnReg to hold current number of button presses so I can use for comparison next time
             btnReg.data = btnCounter.count;
             btnReg.en=1; 
             
-          //reset the score counter 
+          //reset the score counter. current score shoul be 0 since you are entering a new game
            scoreSum.data=2b0;
            scoreSum.en=1;
           //go back to main state

@@ -1,5 +1,6 @@
 //****THIS PROPOGATER TAKES IN A RANDOME NUMBER SEQUENCE AND CLOCK SEQUENCE
 //**OUTPUTS THE RANDOM NUMBER SEQUNCE AT THE RANDOMLY SELECTED CLOCK SEQUENCE
+
 global RowNumb{  //assigns the 4 bit number from counter to LED cathode outputs
   const ROW1 = 4b0000;
   const ROW2= 4b0001;
@@ -62,10 +63,11 @@ module propogate (
     }
   } 
 
- .clk(chosenClk) {   //connect my normal clock to the clock that is randomly generated
+ .clk(chosenClk) {   //connect my normal clock to the clock that is randomly generated, now my counter will operate at chosen clk speed, number will propogate down at chosen speed
     .rst(rst){
-        counter rowCtr(#SIZE(4),#TOP(4b1010)); //ctr will go from 00 to 11 this will be the number of row that is lit
-            //these dffs generate the seeds to start pn_gen of clock choice and number sequence
+        //ctr will count from 00 to 1010 at the speed of the chosen clk
+        counter rowCtr(#SIZE(4),#TOP(4b1010)); 
+       //these dffs generate the seeds to start random number generator of clock choice and number sequence
         dff seed[32] (#INIT(32d51)); 
         dff clkseed[32] (#INIT(32d3)); 
   }
@@ -93,7 +95,7 @@ module propogate (
     clkSel = randomizer.ranClk;
     clkChoice = clkSel;
     
-    //
+    //output row Lit (number of row being lit currently) is the value of the counter above
     rowLit = rowCtr.value;
     
 
@@ -108,13 +110,19 @@ module propogate (
     row8=0;
     row9=0;
     row10=0;
-    gnd1 = ~randNum[0];  //when column is active connect corresponding gnd to 0
+    
+    //if a column is active, the ground must be row10
+    //connect each ground to not of corresponding bit in randomnumber sequence
+    gnd1 = ~randNum[0];  
     gnd2 = ~randNum[1];
     gnd3 = ~randNum[2];
     
+    //output numSeq of propogate is the number sequence it is propogating. 
+    //number sequence it is propogating the randNum (sig that will correct random number seq output should pn_gen throw 000)
     numSeq = randNum;
     
-      
+   
+    //corresponding clock speeds for each clock choice selection
    case (clkSel){
       ClkNumb.SLOWCLK221:
        chosenClk= slowclk22.value;
@@ -134,9 +142,8 @@ module propogate (
       chosenClk = slowclk24.value;
     }
     
-    
-    case (rowCtr.value){
     //when the corresponding row is 'active' make the entire row active
+    case (rowCtr.value){
       RowNumb.ROW1:
           randomizer.randnumNext = 0; //dont generate a randome number sequence
           randomizer.randclkNext = 0; //dont generate a random clock selection
@@ -302,6 +309,10 @@ module propogate (
     row10=1;
         
         RowNumb.ROW11:
+      
+        //from practical tests, generating random number sequences at row 1 when number and clock sequence should be lit leads to errors
+        //therefore all random number generation is done in our buffer row, row 11
+        //also gives players time to react to the next number sequence
         seed.d = seed.q + 1;
           clkseed.d = clkseed.q + 1;
           randomizer.randnumNext = 1; //generate random number seq

@@ -1,3 +1,6 @@
+//*****THE MULTI SEVEN SEG FILE HELPS OUTPUT 
+//*****HELPS OUTPUT VALUES INTO THE 7 SEG LED
+
 module multi_seven_seg #(
     DIGITS = 4 : DIGITS > 0,
     DIV = 16 : DIV >= 0
