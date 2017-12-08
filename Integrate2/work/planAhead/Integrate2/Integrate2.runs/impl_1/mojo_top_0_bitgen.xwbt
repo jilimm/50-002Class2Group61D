@@ -1,8 +1,8 @@
 INTSTYLE=pa
-INFILE=C:\Users\Jing Yun\Desktop\50.002 Computation Structure\1D_Game Design\Integrate2\work\planAhead\Integrate2\Integrate2.runs\impl_1\mojo_top_0_routed.ncd
-OUTFILE=C:\Users\Jing Yun\Desktop\50.002 Computation Structure\1D_Game Design\Integrate2\work\planAhead\Integrate2\Integrate2.runs\impl_1\mojo_top_0.bit
+INFILE=C:\Users\Jing Yun\Desktop\50.002 Computation Structure\1D_Game Design\50-002Class2Group61D\Integrate2\work\planAhead\Integrate2\Integrate2.runs\impl_1\mojo_top_0_routed.ncd
+OUTFILE=C:\Users\Jing Yun\Desktop\50.002 Computation Structure\1D_Game Design\50-002Class2Group61D\Integrate2\work\planAhead\Integrate2\Integrate2.runs\impl_1\mojo_top_0.bit
 FAMILY=Spartan6
 PART=xc6slx9-2tqg144
-WORKINGDIR=C:\Users\Jing Yun\Desktop\50.002 Computation Structure\1D_Game Design\Integrate2\work\planAhead\Integrate2\Integrate2.runs\impl_1
+WORKINGDIR=C:\Users\Jing Yun\Desktop\50.002 Computation Structure\1D_Game Design\50-002Class2Group61D\Integrate2\work\planAhead\Integrate2\Integrate2.runs\impl_1
 LICENSE=WebPack
 USER_INFO=211420319_0_0_438

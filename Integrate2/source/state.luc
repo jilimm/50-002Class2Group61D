@@ -45,8 +45,7 @@ module state (
   }
   main mainState;
   alu myalu;
-  //binToAscii translater;
-  sig result;
+  //binToAscii translater
   sig anybttnStart;
   sig highScore[8];
   bin_to_dec trans (#DIGITS(3),#LEADING_ZEROS(1));
@@ -115,10 +114,11 @@ module state (
     //result = scoreSum.out[0]+scoreSum.out[1]*2+scoreSum.out[2]*4+scoreSum.out[3]*8+scoreSum.out[4]*16+scoreSum.out[5]*32+scoreSum.out[6]*64+scoreSum.out[7]*128;
    // translater.num = 0;
     scoreDisplay[3] = 0;
-    scoreDisplay[2]=0;
-    scoreDisplay[1]=0;
-    scoreDisplay[0]=0;
-    trans.value=0;
+    //scoreDisplay[2]=0;
+    //scoreDisplay[1]=0;
+    //scoreDisplay[0]=0;
+    trans.value=scoreSum.out;
+    scoreDisplay[2:0]=trans.digits;
     case (state.q){
     //main state starts propogation
       state.MAIN:

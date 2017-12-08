@@ -144,8 +144,6 @@ module state_4 (
     .alu(M_myalu_alu)
   );
   
-  reg result;
-  
   reg anybttnStart;
   
   reg [7:0] highScore;
@@ -200,10 +198,8 @@ module state_4 (
     gnd2 = 1'h1;
     gnd3 = 1'h1;
     scoreDisplay[12+3-:4] = 1'h0;
-    scoreDisplay[8+3-:4] = 1'h0;
-    scoreDisplay[4+3-:4] = 1'h0;
-    scoreDisplay[0+3-:4] = 1'h0;
-    M_trans_value = 1'h0;
+    M_trans_value = M_scoreSum_out;
+    scoreDisplay[0+11-:12] = M_trans_digits;
     
     case (M_state_q)
       MAIN_state: begin
@@ -259,7 +255,7 @@ module state_4 (
         end
         M_trans_value = highScore;
         scoreDisplay[0+11-:12] = M_trans_digits[0+11-:12];
-        scoreDisplay[12+3-:4] = 4'hb;
+        scoreDisplay[12+3-:4] = 4'ha;
         row1 = 1'h0;
         row2 = 1'h0;
         row3 = 1'h0;
