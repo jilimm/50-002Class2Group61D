@@ -27,8 +27,6 @@ module state_4 (
     output reg [1:0] rowresult,
     output reg startbutt,
     output reg [15:0] scoreDisplay,
-    output reg test1,
-    output reg test2,
     output reg [7:0] buttonCounter,
     output reg [7:0] buttonReg,
     output reg [7:0] highScoreOut
@@ -36,11 +34,10 @@ module state_4 (
   
   
   
-  localparam MAIN_state = 2'd0;
-  localparam HALT_state = 2'd1;
-  localparam SUMUP_state = 2'd2;
+  localparam MAIN_state = 1'd0;
+  localparam HALT_state = 1'd1;
   
-  reg [1:0] M_state_d, M_state_q = HALT_state;
+  reg M_state_d, M_state_q = HALT_state;
   wire [8-1:0] M_btnCounter_count;
   reg [1-1:0] M_btnCounter_button;
   reg [1-1:0] M_btnCounter_button2;
@@ -83,6 +80,16 @@ module state_4 (
     .data(M_addReg_data),
     .out(M_addReg_out)
   );
+  wire [8-1:0] M_highScore_out;
+  reg [1-1:0] M_highScore_en;
+  reg [8-1:0] M_highScore_data;
+  reg8bit_7 highScore (
+    .clk(clk),
+    .rst(rst),
+    .en(M_highScore_en),
+    .data(M_highScore_data),
+    .out(M_highScore_out)
+  );
   
   wire [2-1:0] M_mainState_result;
   wire [1-1:0] M_mainState_high1;
@@ -104,7 +111,7 @@ module state_4 (
   reg [1-1:0] M_mainState_left2;
   reg [1-1:0] M_mainState_center1;
   reg [1-1:0] M_mainState_right0;
-  main_10 mainState (
+  main_11 mainState (
     .clk(M_mainState_clk),
     .rst(M_mainState_rst),
     .left2(M_mainState_left2),
@@ -134,7 +141,7 @@ module state_4 (
   reg [8-1:0] M_myalu_a;
   reg [8-1:0] M_myalu_b;
   reg [6-1:0] M_myalu_alufn;
-  alu_11 myalu (
+  alu_12 myalu (
     .a(M_myalu_a),
     .b(M_myalu_b),
     .alufn(M_myalu_alufn),
@@ -146,11 +153,9 @@ module state_4 (
   
   reg anybttnStart;
   
-  reg [7:0] highScore;
-  
   wire [12-1:0] M_trans_digits;
   reg [10-1:0] M_trans_value;
-  bin_to_dec_12 trans (
+  bin_to_dec_13 trans (
     .value(M_trans_value),
     .digits(M_trans_digits)
   );
@@ -158,29 +163,28 @@ module state_4 (
   always @* begin
     M_state_d = M_state_q;
     
-    test1 = 1'h0;
-    test2 = 1'h0;
     buttonCounter = M_btnCounter_count;
     buttonReg = M_btnReg_out;
     startbutt = 1'h0;
-    M_mainState_clk = clk;
     totalScore = M_scoreSum_out;
     M_scoreSum_data = 8'h00;
     M_scoreSum_en = 1'h0;
     M_addReg_data = M_scoreSum_out;
     M_addReg_en = 1'h0;
+    M_btnReg_data = 8'h00;
+    M_btnReg_en = 1'h0;
     M_mainState_rst = rst;
     rowresult = M_mainState_result;
+    M_mainState_clk = clk;
     M_mainState_left2 = leftBtn;
     M_mainState_right0 = rightBtn;
     M_mainState_center1 = centBtn;
-    highScore = 8'h00;
-    highScoreOut = highScore;
+    M_highScore_data = 8'h00;
+    highScoreOut = M_highScore_out;
+    M_highScore_en = 1'h0;
     M_btnCounter_button = leftBtn;
     M_btnCounter_button2 = rightBtn;
     M_btnCounter_button3 = centBtn;
-    M_btnReg_data = 8'h00;
-    M_btnReg_en = 1'h0;
     M_myalu_a = 1'h0;
     M_myalu_b = 1'h0;
     M_myalu_alufn = 1'h0;
@@ -198,12 +202,11 @@ module state_4 (
     gnd2 = 1'h1;
     gnd3 = 1'h1;
     scoreDisplay[12+3-:4] = 4'hb;
-    M_trans_value = highScore;
+    M_trans_value = M_scoreSum_out;
     scoreDisplay[0+11-:12] = M_trans_digits;
     
     case (M_state_q)
       MAIN_state: begin
-        test1 = 1'h1;
         M_addReg_en = 1'h1;
         M_scoreSum_en = 1'h0;
         M_btnCounter_button = 1'h0;
@@ -240,20 +243,18 @@ module state_4 (
         end
       end
       HALT_state: begin
-        test2 = 1'h1;
         M_scoreSum_en = 1'h0;
         M_addReg_en = 1'h0;
-        if (highScore < M_scoreSum_out) begin
-          M_myalu_alufn = 6'h35;
-          M_myalu_a = highScore;
-          M_myalu_b = M_scoreSum_out;
-          if (M_myalu_alu[0+0-:1]) begin
-            highScore = M_scoreSum_out;
-          end else begin
-            
-          end
+        M_myalu_alufn = 6'h35;
+        M_myalu_a = M_highScore_out;
+        M_myalu_b = M_scoreSum_out;
+        if (M_myalu_alu[0+0-:1]) begin
+          M_highScore_data = M_scoreSum_out;
+          M_highScore_en = 1'h1;
+        end else begin
+          
         end
-        M_trans_value = highScore;
+        M_trans_value = M_highScore_out;
         scoreDisplay[0+11-:12] = M_trans_digits[0+11-:12];
         scoreDisplay[12+3-:4] = 4'ha;
         row1 = 1'h0;
@@ -269,7 +270,6 @@ module state_4 (
         gnd1 = 1'h1;
         gnd2 = 1'h1;
         gnd3 = 1'h1;
-        test2 = 1'h1;
         M_btnCounter_button = leftBtn;
         M_btnCounter_button2 = rightBtn;
         M_btnCounter_button3 = centBtn;

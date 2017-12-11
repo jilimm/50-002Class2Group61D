@@ -38,6 +38,7 @@ module state (
       reg8bit scoreSum; //use an 8bit register to store the toal score of the game 
       reg8bit btnReg; //stores previous value of button presses
       reg8bit addReg;
+      reg8bit highScore;
     }
     
     
@@ -45,7 +46,7 @@ module state (
   main mainState;
   alu myalu;
   sig anybttnStart; //signal that there has been an any button press which would lead game to jump from halt state to main state
-  sig highScore[8];
+  //sig highScore[8];
   bin_to_dec trans (#DIGITS(3),#LEADING_ZEROS(1)); //to help generate output on 7 seg LED
     
 
@@ -80,9 +81,9 @@ module state (
     mainState.center1 = centBtn;
     
     //initialize high score
-    highScore=8b0;
-    highScoreOut = highScore;   //output highScore so we can diaply it on mojo and 7 seg led.
-    
+    highScore.data=8b0;
+    highScoreOut = highScore.out;   //output highScore so we can diaply it on mojo and 7 seg led.
+    highScore.en=0;
     //raw button input
     btnCounter.button = leftBtn;
     btnCounter.button2 = rightBtn;
@@ -111,7 +112,7 @@ module state (
 
     //setting up my seven_seg output
     scoreDisplay[3] = 11;
-    trans.value=highScore; //display high score on 7 seg LED by default
+    trans.value=scoreSum.out; //display high score on 7 seg LED by default
     scoreDisplay[2:0]=trans.digits; 
     
     //*******OUR FSM************//
@@ -190,25 +191,26 @@ module state (
         
       //since its game over, check and update the high score  
         
-      if (highScore<scoreSum.out){
+      
         //******************************************************************//
         //************ALU IS USED HERE TO UPDATE HIGH SCORE****************
           //*************************************************************//
             myalu.alufn = Inst.CMPLT;
-            myalu.a = highScore;
+            myalu.a = highScore.out;
             myalu.b = scoreSum.out;
           
           //current score is higher than the highScore, update
         if (myalu.alu[0]){
-          highScore = scoreSum.out;
+          highScore.data = scoreSum.out;
+          highScore.en=1;
           }
         else{
             //high score remains the same
           }
-        }
+        
         
        //display the updated highScore on the 7seg
-        trans.value=highScore;
+        trans.value=highScore.out;
             scoreDisplay[2:0]=trans.digits[2:0];
             scoreDisplay[3]=10; 
 

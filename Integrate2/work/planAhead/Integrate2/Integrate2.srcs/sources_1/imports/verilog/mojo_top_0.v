@@ -80,8 +80,6 @@ module mojo_top_0 (
   wire [2-1:0] M_myState_rowresult;
   wire [1-1:0] M_myState_startbutt;
   wire [16-1:0] M_myState_scoreDisplay;
-  wire [1-1:0] M_myState_test1;
-  wire [1-1:0] M_myState_test2;
   wire [8-1:0] M_myState_buttonCounter;
   wire [8-1:0] M_myState_buttonReg;
   wire [8-1:0] M_myState_highScoreOut;
@@ -111,8 +109,6 @@ module mojo_top_0 (
     .rowresult(M_myState_rowresult),
     .startbutt(M_myState_startbutt),
     .scoreDisplay(M_myState_scoreDisplay),
-    .test1(M_myState_test1),
-    .test2(M_myState_test2),
     .buttonCounter(M_myState_buttonCounter),
     .buttonReg(M_myState_buttonReg),
     .highScoreOut(M_myState_highScoreOut)

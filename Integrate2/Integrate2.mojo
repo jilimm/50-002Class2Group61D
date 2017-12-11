@@ -3,22 +3,22 @@
   <files>
     <src>alu.luc</src>
     <src>reg3bit.luc</src>
-    <src>state.luc</src>
+    <src>seven_seg.luc</src>
     <src>reg2bit.luc</src>
+    <src>state.luc</src>
     <src>main.luc</src>
     <src>reg8bit.luc</src>
     <src>multi_seven_seg.luc</src>
-    <src top="true">mojo_top.luc</src>
-    <src>propogate.luc</src>
-    <src>randomizer.luc</src>
-    <src>seven_seg.luc</src>
     <src>binToAscii.luc</src>
+    <src>randomizer.luc</src>
+    <src>propogate.luc</src>
+    <src top="true">mojo_top.luc</src>
     <src>bcounter.luc</src>
     <ucf lib="true">io_shield.ucf</ucf>
-    <ucf>custom.ucf</ucf>
     <ucf lib="true">mojo.ucf</ucf>
-    <component>pn_gen.luc</component>
+    <ucf>custom.ucf</ucf>
     <component>decoder.luc</component>
+    <component>pn_gen.luc</component>
     <component>bin_to_dec.luc</component>
     <component>reset_conditioner.luc</component>
     <component>pipeline.luc</component>

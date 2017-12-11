@@ -8,13 +8,13 @@
 # Constraints from file : 'custom.ucf'
 ####################################################################################
 
-NET "button" LOC = P58;
+NET "button" LOC = P75;
 NET "button" IOSTANDARD = LVTTL;
 NET "button" PULLUP;
 NET "button2" LOC = P67;
 NET "button2" IOSTANDARD = LVTTL;
 NET "button2" PULLUP;
-NET "button3" LOC = P75;
+NET "button3" LOC = P58;
 NET "button3" IOSTANDARD = LVTTL;
 NET "button3" PULLUP;
 NET "high10" LOC = P1;
@@ -35,7 +35,7 @@ NET "high3" LOC = P21;
 NET "high3" IOSTANDARD = LVTTL;
 NET "high2" LOC = P23;
 NET "high2" IOSTANDARD = LVTTL;
-NET "high1" LOC = P50;
+NET "high1" LOC = P15;
 NET "high1" IOSTANDARD = LVTTL;
 NET "low1" LOC = P24;
 NET "low1" IOSTANDARD = LVTTL;
@@ -55,6 +55,7 @@ NET "sev_seg_sel[1]" LOC = P30;
 NET "sev_seg_sel[1]" IOSTANDARD = LVTTL;
 NET "ext_sev_seg[1]" LOC = P27;
 NET "ext_sev_seg[1]" IOSTANDARD = LVTTL;
+NET "ext_sev_seg[4]" LOC = P50;
 NET "ext_sev_seg[4]" IOSTANDARD = LVTTL;
 NET "ext_sev_seg[3]" LOC = P40;
 NET "ext_sev_seg[3]" IOSTANDARD = LVTTL;
@@ -103,7 +104,6 @@ NET "io_led[13]" IOSTANDARD = LVTTL;
 NET "io_led[14]" IOSTANDARD = LVTTL;
 NET "io_led[15]" IOSTANDARD = LVTTL;
 
-NET "io_led[16]" LOC = P15;
 NET "io_led[16]" IOSTANDARD = LVTTL;
 NET "io_led[17]" IOSTANDARD = LVTTL;
 NET "io_led[18]" IOSTANDARD = LVTTL;
