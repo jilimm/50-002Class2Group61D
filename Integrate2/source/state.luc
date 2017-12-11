@@ -214,7 +214,6 @@ module state (
             scoreDisplay[2:0]=trans.digits[2:0];
             scoreDisplay[3]=10; 
 
-      
         //make sure there are no LED lighted up in matrix
          row1=0; 
       row2=0;
