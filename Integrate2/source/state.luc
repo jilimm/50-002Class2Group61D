@@ -204,6 +204,7 @@ module state (
           }
         else{
             //high score remains the same
+            highScore = highScore;
           }
         }
         

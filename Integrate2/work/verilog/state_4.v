@@ -27,8 +27,6 @@ module state_4 (
     output reg [1:0] rowresult,
     output reg startbutt,
     output reg [15:0] scoreDisplay,
-    output reg test1,
-    output reg test2,
     output reg [7:0] buttonCounter,
     output reg [7:0] buttonReg,
     output reg [7:0] highScoreOut
@@ -36,11 +34,10 @@ module state_4 (
   
   
   
-  localparam MAIN_state = 2'd0;
-  localparam HALT_state = 2'd1;
-  localparam SUMUP_state = 2'd2;
+  localparam MAIN_state = 1'd0;
+  localparam HALT_state = 1'd1;
   
-  reg [1:0] M_state_d, M_state_q = HALT_state;
+  reg M_state_d, M_state_q = HALT_state;
   wire [8-1:0] M_btnCounter_count;
   reg [1-1:0] M_btnCounter_button;
   reg [1-1:0] M_btnCounter_button2;
@@ -158,19 +155,19 @@ module state_4 (
   always @* begin
     M_state_d = M_state_q;
     
-    test1 = 1'h0;
-    test2 = 1'h0;
     buttonCounter = M_btnCounter_count;
     buttonReg = M_btnReg_out;
     startbutt = 1'h0;
-    M_mainState_clk = clk;
     totalScore = M_scoreSum_out;
     M_scoreSum_data = 8'h00;
     M_scoreSum_en = 1'h0;
     M_addReg_data = M_scoreSum_out;
     M_addReg_en = 1'h0;
+    M_btnReg_data = 8'h00;
+    M_btnReg_en = 1'h0;
     M_mainState_rst = rst;
     rowresult = M_mainState_result;
+    M_mainState_clk = clk;
     M_mainState_left2 = leftBtn;
     M_mainState_right0 = rightBtn;
     M_mainState_center1 = centBtn;
@@ -179,8 +176,6 @@ module state_4 (
     M_btnCounter_button = leftBtn;
     M_btnCounter_button2 = rightBtn;
     M_btnCounter_button3 = centBtn;
-    M_btnReg_data = 8'h00;
-    M_btnReg_en = 1'h0;
     M_myalu_a = 1'h0;
     M_myalu_b = 1'h0;
     M_myalu_alufn = 1'h0;
@@ -203,7 +198,6 @@ module state_4 (
     
     case (M_state_q)
       MAIN_state: begin
-        test1 = 1'h1;
         M_addReg_en = 1'h1;
         M_scoreSum_en = 1'h0;
         M_btnCounter_button = 1'h0;
@@ -240,7 +234,6 @@ module state_4 (
         end
       end
       HALT_state: begin
-        test2 = 1'h1;
         M_scoreSum_en = 1'h0;
         M_addReg_en = 1'h0;
         if (highScore < M_scoreSum_out) begin
@@ -269,7 +262,6 @@ module state_4 (
         gnd1 = 1'h1;
         gnd2 = 1'h1;
         gnd3 = 1'h1;
-        test2 = 1'h1;
         M_btnCounter_button = leftBtn;
         M_btnCounter_button2 = rightBtn;
         M_btnCounter_button3 = centBtn;

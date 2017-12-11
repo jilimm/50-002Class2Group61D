@@ -1,4 +1,4 @@
-Release 14.7 Map P.20131013 (nt64)
+Release 14.7 Map P.20131013 (nt)
 Xilinx Map Application Log File for Design 'mojo_top_0'
 
 Design Information
@@ -8,7 +8,7 @@ Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Fri Dec 08 15:08:45 2017
+Mapped Date    : Mon Dec 11 19:38:54 2017
 
 Mapping design into LUTs...
 WARNING:MapLib:701 - Signal spi_channel[3] connected to top level port
@@ -29,58 +29,58 @@ Updating timing models...
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
 Running timing-driven placement...
-Total REAL time at the beginning of Placer: 4 secs 
-Total CPU  time at the beginning of Placer: 4 secs 
+Total REAL time at the beginning of Placer: 7 secs 
+Total CPU  time at the beginning of Placer: 7 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:708de026) REAL time: 4 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:5a307cd4) REAL time: 7 secs 
 
 Phase 2.7  Design Feasibility Check
 INFO:Place:834 - Only a subset of IOs are locked. Out of 68 IOs, 58 are locked
    and 10 are not locked. If you would like to print the names of these IOs,
    please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
-Phase 2.7  Design Feasibility Check (Checksum:708de026) REAL time: 4 secs 
+Phase 2.7  Design Feasibility Check (Checksum:5a307cd4) REAL time: 7 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:708de026) REAL time: 4 secs 
+Phase 3.31  Local Placement Optimization (Checksum:5a307cd4) REAL time: 7 secs 
 
 Phase 4.2  Initial Placement for Architecture Specific Features
 ...
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:de86ccde) REAL time: 6 secs 
+(Checksum:128032ec) REAL time: 12 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:de86ccde) REAL time: 6 secs 
+Phase 5.36  Local Placement Optimization (Checksum:128032ec) REAL time: 12 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:de86ccde) REAL time: 6 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:128032ec) REAL time: 12 secs 
 
 Phase 7.3  Local Placement Optimization
 ...
-Phase 7.3  Local Placement Optimization (Checksum:e6074972) REAL time: 7 secs 
+Phase 7.3  Local Placement Optimization (Checksum:6dce29ab) REAL time: 12 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:e6074972) REAL time: 7 secs 
+Phase 8.5  Local Placement Optimization (Checksum:6dce29ab) REAL time: 12 secs 
 
 Phase 9.8  Global Placement
-..................
-...........
-Phase 9.8  Global Placement (Checksum:ab3f20f8) REAL time: 7 secs 
+............
+.......
+Phase 9.8  Global Placement (Checksum:5fd0dcc9) REAL time: 13 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:ab3f20f8) REAL time: 7 secs 
+Phase 10.5  Local Placement Optimization (Checksum:5fd0dcc9) REAL time: 13 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:e3bfb3cc) REAL time: 8 secs 
+Phase 11.18  Placement Optimization (Checksum:921cd691) REAL time: 14 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:e3bfb3cc) REAL time: 8 secs 
+Phase 12.5  Local Placement Optimization (Checksum:921cd691) REAL time: 14 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:df57174a) REAL time: 8 secs 
+Phase 13.34  Placement Validation (Checksum:921cd691) REAL time: 14 secs 
 
-Total REAL time to Placer completion: 8 secs 
-Total CPU  time to Placer completion: 8 secs 
+Total REAL time to Placer completion: 14 secs 
+Total CPU  time to Placer completion: 14 secs 
 Running post-placement packing...
 Writing output files...
 
@@ -98,9 +98,9 @@ Slice Logic Utilization:
     Number used as AND/OR logics:                0
   Number of Slice LUTs:                        524 out of   5,720    9%
     Number used as logic:                      510 out of   5,720    8%
-      Number using O6 output only:             244
+      Number using O6 output only:             243
       Number using O5 output only:             214
-      Number using O5 and O6:                   52
+      Number using O5 and O6:                   53
       Number used as ROM:                        0
     Number used as Memory:                       3 out of   1,440    1%
       Number used as Dual Port RAM:              0
@@ -115,12 +115,12 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   173 out of   1,430   12%
+  Number of occupied Slices:                   168 out of   1,430   11%
   Number of MUXCYs used:                       276 out of   2,860    9%
-  Number of LUT Flip Flop pairs used:          530
-    Number with an unused Flip Flop:           218 out of     530   41%
-    Number with an unused LUT:                   6 out of     530    1%
-    Number of fully used LUT-FF pairs:         306 out of     530   57%
+  Number of LUT Flip Flop pairs used:          529
+    Number with an unused Flip Flop:           217 out of     529   41%
+    Number with an unused LUT:                   5 out of     529    1%
+    Number of fully used LUT-FF pairs:         307 out of     529   58%
     Number of unique control sets:              21
     Number of slice register sites lost
       to control set restrictions:              82 out of  11,440    1%
@@ -162,9 +162,9 @@ Specific Feature Utilization:
 
 Average Fanout of Non-Clock Nets:                3.46
 
-Peak Memory Usage:  495 MB
-Total REAL time to MAP completion:  9 secs 
-Total CPU time to MAP completion (all processors):   8 secs 
+Peak Memory Usage:  305 MB
+Total REAL time to MAP completion:  15 secs 
+Total CPU time to MAP completion (all processors):   15 secs 
 
 Mapping completed.
 See MAP report file "mojo_top_0.mrp" for details.
