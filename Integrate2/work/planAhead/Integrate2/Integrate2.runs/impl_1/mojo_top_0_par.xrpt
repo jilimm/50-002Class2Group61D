@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Mon Dec 11 21:49:15 2017">
+  <application stringID="par" timeStamp="Wed Dec 13 11:43:54 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -62,11 +62,11 @@
     </task>
     <task stringID="PAR_PAR">
       <section stringID="PAR_DESIGN_SUMMARY">
-        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="5 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="5 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="6 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="6 secs "/>
         <item dataType="int" stringID="PAR_UNROUTES" value="0"/>
         <item dataType="float" stringID="PAR_TIMING_SCORE" value="0.000000"/>
-        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="5 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="6 secs "/>
         <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="6 secs "/>
       </section>
     </task>
@@ -86,9 +86,9 @@
             <item label="Routed" stringID="ROUTED" value="ROUTED"/>
             <item label="Resource" stringID="RESOURCE" value="BUFGMUX_X2Y11"/>
             <item label="Locked" stringID="LOCKED" value="No"/>
-            <item dataType="float" label="Fanout" stringID="FANOUT" value="81.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.112000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.503000"/>
+            <item dataType="float" label="Fanout" stringID="FANOUT" value="83.000000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.080000"/>
+            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.471000"/>
           </row>
           <row stringID="row" value="2">
             <item label="Clock Net" stringID="CLOCK_NET" value="myState/mainState/mypropogater/chosenClk"/>
@@ -96,24 +96,24 @@
             <item label="Resource" stringID="RESOURCE" value="BUFGMUX_X2Y3"/>
             <item label="Locked" stringID="LOCKED" value="No"/>
             <item dataType="float" label="Fanout" stringID="FANOUT" value="15.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.095000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.494000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.009000"/>
+            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.399000"/>
           </row>
           <row stringID="row" value="3">
             <item label="Clock Net" stringID="CLOCK_NET" value="myState/btnCounter/M_edge_ctr_value"/>
             <item label="Routed" stringID="ROUTED" value="ROUTED"/>
             <item label="Resource" stringID="RESOURCE" value="Local"/>
             <item dataType="float" label="Fanout" stringID="FANOUT" value="8.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.324000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.594000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.800000"/>
+            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.614000"/>
           </row>
           <row stringID="row" value="4">
             <item label="Clock Net" stringID="CLOCK_NET" value="myState/mainState/M_edge_ctr_value"/>
             <item label="Routed" stringID="ROUTED" value="ROUTED"/>
             <item label="Resource" stringID="RESOURCE" value="Local"/>
             <item dataType="float" label="Fanout" stringID="FANOUT" value="6.000000"/>
-            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.353000"/>
-            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.148000"/>
+            <item dataType="float" label="Net Skew(ns)" stringID="NET_SKEW" value="0.469000"/>
+            <item dataType="float" label="Max Delay(ns)" stringID="MAX_DELAY" value="1.049000"/>
           </row>
         </table>
       </section>
@@ -1531,7 +1531,7 @@
     </task>
   </application>
 
-  <application stringID="Par" timeStamp="Mon Dec 11 21:49:15 2017">
+  <application stringID="Par" timeStamp="Wed Dec 13 11:43:54 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -1610,15 +1610,15 @@
           <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_CARRY4" value="11"/>
           <item dataType="int" stringID="PAR_NUM_LUT_RT_DRIVES_OTHERS" value="0"/>
         </item>
-        <item AVAILABLE="1430" dataType="int" stringID="PAR_OCCUPIED_SLICES" value="174">
+        <item AVAILABLE="1430" dataType="int" stringID="PAR_OCCUPIED_SLICES" value="173">
           <item AVAILABLE="355" dataType="int" stringID="PAR_NUM_SLICEL" value="71"/>
           <item AVAILABLE="360" dataType="int" stringID="PAR_NUM_SLICEM" value="1"/>
-          <item AVAILABLE="715" dataType="int" stringID="PAR_NUM_SLICEX" value="102"/>
+          <item AVAILABLE="715" dataType="int" stringID="PAR_NUM_SLICEX" value="101"/>
         </item>
-        <item dataType="int" stringID="PAR_OCCUPIED_LUT_AND_FF" value="530">
-          <item dataType="int" stringID="PAR_OCCUPIED_LUT_ONLY" value="211"/>
-          <item dataType="int" stringID="PAR_OCCUPIED_FF_ONLY" value="5"/>
-          <item dataType="int" stringID="PAR_OCCUPIED_FF_AND_LUT" value="314"/>
+        <item dataType="int" stringID="PAR_OCCUPIED_LUT_AND_FF" value="531">
+          <item dataType="int" stringID="PAR_OCCUPIED_LUT_ONLY" value="212"/>
+          <item dataType="int" stringID="PAR_OCCUPIED_FF_ONLY" value="6"/>
+          <item dataType="int" stringID="PAR_OCCUPIED_FF_AND_LUT" value="313"/>
         </item>
       </section>
       <section stringID="PAR_IOB_REPORTING">

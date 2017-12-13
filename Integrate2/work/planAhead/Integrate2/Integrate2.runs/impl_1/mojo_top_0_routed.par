@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-DESKTOP-Q397L9N::  Mon Dec 11 21:49:12 2017
+DESKTOP-Q397L9N::  Wed Dec 13 11:43:51 2017
 
 par -intstyle pa -w -mt on mojo_top_0.ncd mojo_top_0_routed.ncd 
 
@@ -45,12 +45,12 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   174 out of   1,430   12%
+  Number of occupied Slices:                   173 out of   1,430   12%
   Number of MUXCYs used:                       276 out of   2,860    9%
-  Number of LUT Flip Flop pairs used:          530
-    Number with an unused Flip Flop:           211 out of     530   39%
-    Number with an unused LUT:                   5 out of     530    1%
-    Number of fully used LUT-FF pairs:         314 out of     530   59%
+  Number of LUT Flip Flop pairs used:          531
+    Number with an unused Flip Flop:           212 out of     531   39%
+    Number with an unused LUT:                   6 out of     531    1%
+    Number of fully used LUT-FF pairs:         313 out of     531   58%
     Number of slice register sites lost
       to control set restrictions:               0 out of  11,440    0%
 
@@ -103,29 +103,29 @@ WARNING:Par:288 - The signal spi_mosi_IBUF has no load.  PAR will not attempt to
 Starting Multi-threaded Router
 
 
-Phase  1  : 2244 unrouted;      REAL time: 3 secs 
+Phase  1  : 2247 unrouted;      REAL time: 4 secs 
 
-Phase  2  : 1857 unrouted;      REAL time: 3 secs 
+Phase  2  : 1858 unrouted;      REAL time: 4 secs 
 
-Phase  3  : 747 unrouted;      REAL time: 4 secs 
+Phase  3  : 822 unrouted;      REAL time: 4 secs 
 
-Phase  4  : 747 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
+Phase  4  : 822 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
 
 Updating file: mojo_top_0_routed.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 5 secs 
-Total REAL time to Router completion: 5 secs 
-Total CPU time to Router completion (all processors): 5 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
+Total REAL time to Router completion: 6 secs 
+Total CPU time to Router completion (all processors): 6 secs 
 
 Generating "PAR" statistics.
 
@@ -136,17 +136,17 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|           clk_BUFGP | BUFGMUX_X2Y11| No   |   81 |  0.112     |  1.503      |
+|           clk_BUFGP | BUFGMUX_X2Y11| No   |   83 |  0.080     |  1.471      |
 +---------------------+--------------+------+------+------------+-------------+
 |myState/mainState/my |              |      |      |            |             |
 |propogater/chosenClk |              |      |      |            |             |
-|                     |  BUFGMUX_X2Y3| No   |   15 |  0.095     |  1.494      |
+|                     |  BUFGMUX_X2Y3| No   |   15 |  0.009     |  1.399      |
 +---------------------+--------------+------+------+------------+-------------+
 |myState/btnCounter/M |              |      |      |            |             |
-|     _edge_ctr_value |         Local|      |    8 |  0.324     |  1.594      |
+|     _edge_ctr_value |         Local|      |    8 |  0.800     |  1.614      |
 +---------------------+--------------+------+------+------------+-------------+
 |myState/mainState/M_ |              |      |      |            |             |
-|      edge_ctr_value |         Local|      |    6 |  0.353     |  1.148      |
+|      edge_ctr_value |         Local|      |    6 |  0.469     |  1.049      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -166,8 +166,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |    13.181ns|     6.819ns|       0|           0
-   50%                                      | HOLD        |     0.423ns|            |       0|           0
+  TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH | SETUP       |    13.495ns|     6.505ns|       0|           0
+   50%                                      | HOLD        |     0.414ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -180,10 +180,10 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 6 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 5 secs 
+Total REAL time to PAR completion: 6 secs 
 Total CPU time to PAR completion (all processors): 6 secs 
 
-Peak Memory Usage:  350 MB
+Peak Memory Usage:  348 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.

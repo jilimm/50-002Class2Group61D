@@ -84,10 +84,15 @@ module propogate (
     randomizer.clkregEn = 0;
     randomizer.randnumrst=rst; //following mojo pn_gen convention
     randomizer.randclkrst = rst;
+    
     if (randomizer.ranNum==3b000){
-            randNum = 3b101; //if the randomizer gives me number sequence 000 I will make the number sequence 101
+            randNum = 3b010; //if the randomizer gives me number sequence 000 I will make the number sequence 101
     }
-    else{
+    else if (randomizer.ranNum==3b101){
+            randNum = 3b110;}
+     else if (randomizer.ranNum==3b111){
+            randNum=3b110;
+        }else{
           randNum = randomizer.ranNum; //if not the number sequence is the number given by randomizer
     }
     

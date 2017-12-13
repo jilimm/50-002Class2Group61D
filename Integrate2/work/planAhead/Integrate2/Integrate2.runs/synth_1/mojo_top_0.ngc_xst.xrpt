@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Mon Dec 11 21:48:33 2017">
+  <application stringID="Xst" timeStamp="Wed Dec 13 11:43:12 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -83,11 +83,11 @@
       <item dataType="int" stringID="XST_COMPARATORS" value="37">
         <item dataType="int" stringID="XST_8BIT_COMPARATOR_GREATER" value="3"/>
       </item>
-      <item dataType="int" stringID="XST_MULTIPLEXERS" value="174">
+      <item dataType="int" stringID="XST_MULTIPLEXERS" value="179">
         <item dataType="int" stringID="XST_1BIT_2TO1_MULTIPLEXER" value="137"/>
         <item dataType="int" stringID="XST_10BIT_2TO1_MULTIPLEXER" value="19"/>
         <item dataType="int" stringID="XST_2BIT_2TO1_MULTIPLEXER" value="2"/>
-        <item dataType="int" stringID="XST_3BIT_2TO1_MULTIPLEXER" value="1"/>
+        <item dataType="int" stringID="XST_3BIT_2TO1_MULTIPLEXER" value="6"/>
         <item dataType="int" stringID="XST_32BIT_2TO1_MULTIPLEXER" value="2"/>
         <item dataType="int" stringID="XST_8BIT_2TO1_MULTIPLEXER" value="10"/>
       </item>
@@ -113,11 +113,11 @@
       <item dataType="int" stringID="XST_COMPARATORS" value="37">
         <item dataType="int" stringID="XST_8BIT_COMPARATOR_GREATER" value="3"/>
       </item>
-      <item dataType="int" stringID="XST_MULTIPLEXERS" value="174">
+      <item dataType="int" stringID="XST_MULTIPLEXERS" value="179">
         <item dataType="int" stringID="XST_1BIT_2TO1_MULTIPLEXER" value="137"/>
         <item dataType="int" stringID="XST_10BIT_2TO1_MULTIPLEXER" value="19"/>
         <item dataType="int" stringID="XST_2BIT_2TO1_MULTIPLEXER" value="2"/>
-        <item dataType="int" stringID="XST_3BIT_2TO1_MULTIPLEXER" value="1"/>
+        <item dataType="int" stringID="XST_3BIT_2TO1_MULTIPLEXER" value="6"/>
         <item dataType="int" stringID="XST_32BIT_2TO1_MULTIPLEXER" value="2"/>
         <item dataType="int" stringID="XST_8BIT_2TO1_MULTIPLEXER" value="10"/>
       </item>
@@ -146,8 +146,8 @@
           <item dataType="int" stringID="XST_INV" value="22"/>
           <item dataType="int" stringID="XST_LUT1" value="225"/>
           <item dataType="int" stringID="XST_LUT2" value="25"/>
-          <item dataType="int" stringID="XST_LUT3" value="27"/>
-          <item dataType="int" stringID="XST_LUT4" value="99"/>
+          <item dataType="int" stringID="XST_LUT3" value="28"/>
+          <item dataType="int" stringID="XST_LUT4" value="98"/>
           <item dataType="int" stringID="XST_LUT5" value="70"/>
           <item dataType="int" stringID="XST_LUT6" value="97"/>
           <item dataType="int" stringID="XST_MUXCY" value="247"/>

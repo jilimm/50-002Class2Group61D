@@ -245,15 +245,15 @@ Synthesizing Unit <propogate_28>.
     Related source file is "C:/Users/ibm/Documents/GitHub/50-002Class2Group61D/Integrate2/work/planAhead/Integrate2/Integrate2.srcs/sources_1/imports/verilog/propogate_28.v".
     Found 32-bit register for signal <M_clkseed_q>.
     Found 32-bit register for signal <M_seed_q>.
-    Found 32-bit adder for signal <M_seed_q[31]_GND_11_o_add_3_OUT> created at line 324.
-    Found 32-bit adder for signal <M_clkseed_q[31]_GND_11_o_add_4_OUT> created at line 325.
-    Found 16x11-bit Read Only RAM for signal <_n0088>
-    Found 1-bit 7-to-1 multiplexer for signal <chosenClk> created at line 135.
+    Found 32-bit adder for signal <M_seed_q[31]_GND_11_o_add_7_OUT> created at line 332.
+    Found 32-bit adder for signal <M_clkseed_q[31]_GND_11_o_add_8_OUT> created at line 333.
+    Found 16x11-bit Read Only RAM for signal <_n0095>
+    Found 1-bit 7-to-1 multiplexer for signal <chosenClk> created at line 143.
     Summary:
 	inferred   1 RAM(s).
 	inferred   2 Adder/Subtractor(s).
 	inferred  64 D-type flip-flop(s).
-	inferred   3 Multiplexer(s).
+	inferred   8 Multiplexer(s).
 Unit <propogate_28> synthesized.
 
 Synthesizing Unit <counter_40>.
@@ -482,13 +482,13 @@ Macro Statistics
  8-bit comparator equal                                : 2
  8-bit comparator greater                              : 3
  8-bit comparator lessequal                            : 2
-# Multiplexers                                         : 174
+# Multiplexers                                         : 179
  1-bit 2-to-1 multiplexer                              : 137
  1-bit 7-to-1 multiplexer                              : 1
  10-bit 2-to-1 multiplexer                             : 19
  12-bit 2-to-1 multiplexer                             : 2
  2-bit 2-to-1 multiplexer                              : 2
- 3-bit 2-to-1 multiplexer                              : 1
+ 3-bit 2-to-1 multiplexer                              : 6
  32-bit 2-to-1 multiplexer                             : 2
  8-bit 2-to-1 multiplexer                              : 10
 # Logic shifters                                       : 7
@@ -549,7 +549,7 @@ Unit <counter_45> synthesized (advanced).
 Synthesizing (advanced) Unit <propogate_28>.
 The following registers are absorbed into counter <M_seed_q>: 1 register on signal <M_seed_q>.
 The following registers are absorbed into counter <M_clkseed_q>: 1 register on signal <M_clkseed_q>.
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0088> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0095> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
@@ -609,13 +609,13 @@ Macro Statistics
  8-bit comparator equal                                : 2
  8-bit comparator greater                              : 3
  8-bit comparator lessequal                            : 2
-# Multiplexers                                         : 174
+# Multiplexers                                         : 179
  1-bit 2-to-1 multiplexer                              : 137
  1-bit 7-to-1 multiplexer                              : 1
  10-bit 2-to-1 multiplexer                             : 19
  12-bit 2-to-1 multiplexer                             : 2
  2-bit 2-to-1 multiplexer                              : 2
- 3-bit 2-to-1 multiplexer                              : 1
+ 3-bit 2-to-1 multiplexer                              : 6
  32-bit 2-to-1 multiplexer                             : 2
  8-bit 2-to-1 multiplexer                              : 10
 # Logic shifters                                       : 7
@@ -805,20 +805,20 @@ WARNING:Xst:1898 - Due to constant pushing, FF/Latch <myState/mainState/mypropog
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <myState/mainState/mypropogater/randomizer/clk_gen/M_z_q_11> is unconnected in block <mojo_top_0>.
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <myState/mainState/mypropogater/randomizer/clk_gen/M_z_q_6> is unconnected in block <mojo_top_0>.
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <myState/mainState/mypropogater/randomizer/clk_gen/M_z_q_1> is unconnected in block <mojo_top_0>.
-WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_31> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_seed_q_31> of sequential type is unconnected in block <mojo_top_0>.
-WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_29> of sequential type is unconnected in block <mojo_top_0>.
-WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_28> of sequential type is unconnected in block <mojo_top_0>.
-WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_30> of sequential type is unconnected in block <mojo_top_0>.
-WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_26> of sequential type is unconnected in block <mojo_top_0>.
-WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_25> of sequential type is unconnected in block <mojo_top_0>.
-WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_27> of sequential type is unconnected in block <mojo_top_0>.
+WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_31> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_seed_q_29> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_seed_q_28> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_seed_q_30> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_seed_q_26> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_seed_q_25> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_seed_q_27> of sequential type is unconnected in block <mojo_top_0>.
+WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_30> of sequential type is unconnected in block <mojo_top_0>.
+WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_29> of sequential type is unconnected in block <mojo_top_0>.
+WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_27> of sequential type is unconnected in block <mojo_top_0>.
+WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_26> of sequential type is unconnected in block <mojo_top_0>.
+WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_28> of sequential type is unconnected in block <mojo_top_0>.
+WARNING:Xst:2677 - Node <myState/mainState/mypropogater/M_clkseed_q_25> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/randomizer/numb_gen/M_w_q_31> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/randomizer/numb_gen/M_w_q_30> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/randomizer/numb_gen/M_w_q_29> of sequential type is unconnected in block <mojo_top_0>.
@@ -879,30 +879,30 @@ WARNING:Xst:2677 - Node <myState/mainState/mypropogater/randomizer/clk_gen/M_x_q
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/randomizer/clk_gen/M_y_q_30> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/randomizer/clk_gen/M_y_q_25> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <myState/mainState/mypropogater/randomizer/clk_gen/M_z_q_25> of sequential type is unconnected in block <mojo_top_0>.
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_10> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_10> <myState/mainState/mypropogater/slowclk20/M_ctr_q_10> <myState/mainState/mypropogater/slowclk21/M_ctr_q_10> <myState/mainState/edge_ctr/M_ctr_q_10> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_11> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_11> <myState/mainState/mypropogater/slowclk20/M_ctr_q_11> <myState/mainState/mypropogater/slowclk21/M_ctr_q_11> <myState/mainState/edge_ctr/M_ctr_q_11> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_12> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_12> <myState/mainState/mypropogater/slowclk20/M_ctr_q_12> <myState/mainState/mypropogater/slowclk21/M_ctr_q_12> <myState/mainState/edge_ctr/M_ctr_q_12> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_13> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_13> <myState/mainState/mypropogater/slowclk20/M_ctr_q_13> <myState/mainState/mypropogater/slowclk21/M_ctr_q_13> <myState/mainState/edge_ctr/M_ctr_q_13> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_0> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_0> <myState/mainState/mypropogater/slowclk20/M_ctr_q_0> <myState/mainState/mypropogater/slowclk21/M_ctr_q_0> <myState/mainState/edge_ctr/M_ctr_q_0> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_14> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_14> <myState/mainState/mypropogater/slowclk20/M_ctr_q_14> <myState/mainState/mypropogater/slowclk21/M_ctr_q_14> <myState/mainState/edge_ctr/M_ctr_q_14> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_1> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_1> <myState/mainState/mypropogater/slowclk20/M_ctr_q_1> <myState/mainState/mypropogater/slowclk21/M_ctr_q_1> <myState/mainState/edge_ctr/M_ctr_q_1> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_20> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_20> <myState/mainState/mypropogater/slowclk20/M_ctr_q_20> <myState/mainState/mypropogater/slowclk21/M_ctr_q_20> <myState/mainState/edge_ctr/M_ctr_q_20> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_2> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_2> <myState/mainState/mypropogater/slowclk20/M_ctr_q_2> <myState/mainState/mypropogater/slowclk21/M_ctr_q_2> <myState/mainState/edge_ctr/M_ctr_q_2> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_15> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_15> <myState/mainState/mypropogater/slowclk20/M_ctr_q_15> <myState/mainState/mypropogater/slowclk21/M_ctr_q_15> <myState/mainState/edge_ctr/M_ctr_q_15> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_10> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_10> <myState/mainState/mypropogater/slowclk21/M_ctr_q_10> <myState/mainState/mypropogater/slowclk20/M_ctr_q_10> <myState/mainState/edge_ctr/M_ctr_q_10> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_11> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_11> <myState/mainState/mypropogater/slowclk21/M_ctr_q_11> <myState/mainState/mypropogater/slowclk20/M_ctr_q_11> <myState/mainState/edge_ctr/M_ctr_q_11> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_12> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_12> <myState/mainState/mypropogater/slowclk21/M_ctr_q_12> <myState/mainState/mypropogater/slowclk20/M_ctr_q_12> <myState/mainState/edge_ctr/M_ctr_q_12> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_13> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_13> <myState/mainState/mypropogater/slowclk21/M_ctr_q_13> <myState/mainState/mypropogater/slowclk20/M_ctr_q_13> <myState/mainState/edge_ctr/M_ctr_q_13> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_0> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_0> <myState/mainState/mypropogater/slowclk21/M_ctr_q_0> <myState/mainState/mypropogater/slowclk20/M_ctr_q_0> <myState/mainState/edge_ctr/M_ctr_q_0> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_14> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_14> <myState/mainState/mypropogater/slowclk21/M_ctr_q_14> <myState/mainState/mypropogater/slowclk20/M_ctr_q_14> <myState/mainState/edge_ctr/M_ctr_q_14> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_1> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_1> <myState/mainState/mypropogater/slowclk21/M_ctr_q_1> <myState/mainState/mypropogater/slowclk20/M_ctr_q_1> <myState/mainState/edge_ctr/M_ctr_q_1> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_20> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_20> <myState/mainState/mypropogater/slowclk21/M_ctr_q_20> <myState/mainState/mypropogater/slowclk20/M_ctr_q_20> <myState/mainState/edge_ctr/M_ctr_q_20> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_2> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_2> <myState/mainState/mypropogater/slowclk21/M_ctr_q_2> <myState/mainState/mypropogater/slowclk20/M_ctr_q_2> <myState/mainState/edge_ctr/M_ctr_q_2> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_15> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_15> <myState/mainState/mypropogater/slowclk21/M_ctr_q_15> <myState/mainState/mypropogater/slowclk20/M_ctr_q_15> <myState/mainState/edge_ctr/M_ctr_q_15> 
 INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_21> in Unit <mojo_top_0> is equivalent to the following 3 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_21> <myState/mainState/mypropogater/slowclk21/M_ctr_q_21> <myState/mainState/edge_ctr/M_ctr_q_21> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_3> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_3> <myState/mainState/mypropogater/slowclk20/M_ctr_q_3> <myState/mainState/mypropogater/slowclk21/M_ctr_q_3> <myState/mainState/edge_ctr/M_ctr_q_3> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_16> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_16> <myState/mainState/mypropogater/slowclk20/M_ctr_q_16> <myState/mainState/mypropogater/slowclk21/M_ctr_q_16> <myState/mainState/edge_ctr/M_ctr_q_16> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_3> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_3> <myState/mainState/mypropogater/slowclk21/M_ctr_q_3> <myState/mainState/mypropogater/slowclk20/M_ctr_q_3> <myState/mainState/edge_ctr/M_ctr_q_3> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_16> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_16> <myState/mainState/mypropogater/slowclk21/M_ctr_q_16> <myState/mainState/mypropogater/slowclk20/M_ctr_q_16> <myState/mainState/edge_ctr/M_ctr_q_16> 
 INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_22> in Unit <mojo_top_0> is equivalent to the following 2 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_22> <myState/mainState/edge_ctr/M_ctr_q_22> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_4> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_4> <myState/mainState/mypropogater/slowclk20/M_ctr_q_4> <myState/mainState/mypropogater/slowclk21/M_ctr_q_4> <myState/mainState/edge_ctr/M_ctr_q_4> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_17> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_17> <myState/mainState/mypropogater/slowclk20/M_ctr_q_17> <myState/mainState/mypropogater/slowclk21/M_ctr_q_17> <myState/mainState/edge_ctr/M_ctr_q_17> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_4> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_4> <myState/mainState/mypropogater/slowclk21/M_ctr_q_4> <myState/mainState/mypropogater/slowclk20/M_ctr_q_4> <myState/mainState/edge_ctr/M_ctr_q_4> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_17> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_17> <myState/mainState/mypropogater/slowclk21/M_ctr_q_17> <myState/mainState/mypropogater/slowclk20/M_ctr_q_17> <myState/mainState/edge_ctr/M_ctr_q_17> 
 INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_23> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_23> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_5> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_5> <myState/mainState/mypropogater/slowclk20/M_ctr_q_5> <myState/mainState/mypropogater/slowclk21/M_ctr_q_5> <myState/mainState/edge_ctr/M_ctr_q_5> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_18> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_18> <myState/mainState/mypropogater/slowclk20/M_ctr_q_18> <myState/mainState/mypropogater/slowclk21/M_ctr_q_18> <myState/mainState/edge_ctr/M_ctr_q_18> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_19> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_19> <myState/mainState/mypropogater/slowclk20/M_ctr_q_19> <myState/mainState/mypropogater/slowclk21/M_ctr_q_19> <myState/mainState/edge_ctr/M_ctr_q_19> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_6> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_6> <myState/mainState/mypropogater/slowclk20/M_ctr_q_6> <myState/mainState/mypropogater/slowclk21/M_ctr_q_6> <myState/mainState/edge_ctr/M_ctr_q_6> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_7> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_7> <myState/mainState/mypropogater/slowclk20/M_ctr_q_7> <myState/mainState/mypropogater/slowclk21/M_ctr_q_7> <myState/mainState/edge_ctr/M_ctr_q_7> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_8> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_8> <myState/mainState/mypropogater/slowclk20/M_ctr_q_8> <myState/mainState/mypropogater/slowclk21/M_ctr_q_8> <myState/mainState/edge_ctr/M_ctr_q_8> 
-INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_9> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_9> <myState/mainState/mypropogater/slowclk20/M_ctr_q_9> <myState/mainState/mypropogater/slowclk21/M_ctr_q_9> <myState/mainState/edge_ctr/M_ctr_q_9> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_5> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_5> <myState/mainState/mypropogater/slowclk21/M_ctr_q_5> <myState/mainState/mypropogater/slowclk20/M_ctr_q_5> <myState/mainState/edge_ctr/M_ctr_q_5> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_18> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_18> <myState/mainState/mypropogater/slowclk21/M_ctr_q_18> <myState/mainState/mypropogater/slowclk20/M_ctr_q_18> <myState/mainState/edge_ctr/M_ctr_q_18> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_19> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_19> <myState/mainState/mypropogater/slowclk21/M_ctr_q_19> <myState/mainState/mypropogater/slowclk20/M_ctr_q_19> <myState/mainState/edge_ctr/M_ctr_q_19> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_6> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_6> <myState/mainState/mypropogater/slowclk21/M_ctr_q_6> <myState/mainState/mypropogater/slowclk20/M_ctr_q_6> <myState/mainState/edge_ctr/M_ctr_q_6> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_7> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_7> <myState/mainState/mypropogater/slowclk21/M_ctr_q_7> <myState/mainState/mypropogater/slowclk20/M_ctr_q_7> <myState/mainState/edge_ctr/M_ctr_q_7> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_8> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_8> <myState/mainState/mypropogater/slowclk21/M_ctr_q_8> <myState/mainState/mypropogater/slowclk20/M_ctr_q_8> <myState/mainState/edge_ctr/M_ctr_q_8> 
+INFO:Xst:2261 - The FF/Latch <myState/mainState/mypropogater/slowclk24/M_ctr_q_9> in Unit <mojo_top_0> is equivalent to the following 4 FFs/Latches, which will be removed : <myState/mainState/mypropogater/slowclk23/M_ctr_q_9> <myState/mainState/mypropogater/slowclk21/M_ctr_q_9> <myState/mainState/mypropogater/slowclk20/M_ctr_q_9> <myState/mainState/edge_ctr/M_ctr_q_9> 
 INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <myState/btnCounter/edge_ctr/M_ctr_q_0> 
 INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_1> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <myState/btnCounter/edge_ctr/M_ctr_q_1> 
 INFO:Xst:2261 - The FF/Latch <seg/ctr/M_ctr_q_2> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <myState/btnCounter/edge_ctr/M_ctr_q_2> 
@@ -973,14 +973,14 @@ Partition Implementation Status
 
 Clock Information:
 ------------------
----------------------------------------------------------------------------------------------+-------------------------------------------------------+-------+
-Clock Signal                                                                                 | Clock buffer(FF name)                                 | Load  |
----------------------------------------------------------------------------------------------+-------------------------------------------------------+-------+
-clk                                                                                          | BUFGP                                                 | 281   |
-myState/mainState/mypropogater/slowclk24/M_ctr_q_22                                          | NONE(myState/mainState/M_left_q_0)                    | 6     |
-myState/mainState/mypropogater/chosenClk_0(myState/mainState/mypropogater/Mmux_chosenClk12:O)| BUFG(*)(myState/mainState/mypropogater/M_clkseed_q_23)| 54    |
-myState/btnCounter/edge_ctr/M_ctr_q_22                                                       | NONE(myState/btnCounter/edge_detector2/M_last_q)      | 3     |
----------------------------------------------------------------------------------------------+-------------------------------------------------------+-------+
+---------------------------------------------------------------------------------------------+----------------------------------------------------+-------+
+Clock Signal                                                                                 | Clock buffer(FF name)                              | Load  |
+---------------------------------------------------------------------------------------------+----------------------------------------------------+-------+
+clk                                                                                          | BUFGP                                              | 281   |
+myState/mainState/mypropogater/slowclk24/M_ctr_q_22                                          | NONE(myState/mainState/M_left_q_0)                 | 6     |
+myState/mainState/mypropogater/chosenClk_0(myState/mainState/mypropogater/Mmux_chosenClk12:O)| BUFG(*)(myState/mainState/mypropogater/M_seed_q_23)| 54    |
+myState/btnCounter/edge_ctr/M_ctr_q_22                                                       | NONE(myState/btnCounter/edge_detector2/M_last_q)   | 3     |
+---------------------------------------------------------------------------------------------+----------------------------------------------------+-------+
 (*) This 1 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
 Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.

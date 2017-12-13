@@ -110,9 +110,17 @@ module propogate_28 (
     M_randomizer_randnumrst = rst;
     M_randomizer_randclkrst = rst;
     if (M_randomizer_ranNum == 3'h0) begin
-      randNum = 3'h5;
+      randNum = 3'h2;
     end else begin
-      randNum = M_randomizer_ranNum;
+      if (M_randomizer_ranNum == 3'h5) begin
+        randNum = 3'h6;
+      end else begin
+        if (M_randomizer_ranNum == 3'h7) begin
+          randNum = 3'h6;
+        end else begin
+          randNum = M_randomizer_ranNum;
+        end
+      end
     end
     clkSel = M_randomizer_ranClk;
     clkChoice = clkSel;
